@@ -9,18 +9,23 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
 
-public class TeamSignIn extends JFrame {
+public class TeamSignIn extends JFrame  implements ActionListener,ItemListener{
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JButton btnNewButton,btnNewButton_1;
 
 	/**
 	 * Launch the application.
@@ -68,6 +73,7 @@ public class TeamSignIn extends JFrame {
 		
 		textField_1 = new JTextField();
 		panel_3.add(textField_1);
+		textField_1.addActionListener(this);
 		textField_1.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
@@ -80,6 +86,7 @@ public class TeamSignIn extends JFrame {
 		
 		textField_2 = new JTextField();
 		panel_2.add(textField_2);
+		textField_2.addActionListener(this);
 		textField_2.setColumns(10);
 		
 		JPanel panel_1 = new JPanel();
@@ -92,6 +99,7 @@ public class TeamSignIn extends JFrame {
 		
 		textField_3 = new JTextField();
 		panel_1.add(textField_3);
+		textField_3.addActionListener(this);
 		textField_3.setColumns(10);
 		
 		JPanel panel = new JPanel();
@@ -104,18 +112,43 @@ public class TeamSignIn extends JFrame {
 		
 		textField = new JTextField();
 		panel.add(textField);
+		textField.addActionListener(this);
 		textField.setColumns(10);
 		
 		JPanel panel_5 = new JPanel();
 		contentPane.add(panel_5);
 		
-		JButton btnNewButton = new JButton("회원가입");
+		btnNewButton = new JButton("회원가입");
+		btnNewButton.addActionListener(this);
 		panel_5.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("뒤로가기");
+		btnNewButton_1 = new JButton("뒤로가기");
+		btnNewButton_1.addActionListener(this);
 		panel_5.add(btnNewButton_1);
 		
 		setVisible(true);
+	}
+
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		TeamDAO dao =new TeamDAO();
+		String cmd =e.getActionCommand();
+		
+		if(cmd.equals("회원가입")) {
+			UserDTO newdto= new UserDTO();
+			dao.insertUser(newdto);
+			System.out.println( "syss "+dao.insertUser(newdto));
+		}else {
+			
+		}
+		
 	}
 
 }

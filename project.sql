@@ -35,5 +35,10 @@ create SEQUENCE boardCount_SEQ -- 시퀀스를 생성할거야 시퀀스 이름
 --증가를 1씩 할거야 (옵션이야 무조건 줘야 되는 코드가 아니야, 안주면 기본값 1)
 start with 0  -- 옵션(기본값 1)
 maxvalue 38 --  최대 얼마까지 증가를 시킬꺼야?? 옵션(기본값 10^27 까지 가능해)
+
+minvalue 1 -- 옵션(기본값은 1)
+nocycle cache 2;
+
 minvalue 0 -- 옵션(기본값은 1)
 nocycle cache 2;
+
