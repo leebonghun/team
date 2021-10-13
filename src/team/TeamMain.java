@@ -19,11 +19,14 @@ import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
 
-public class TeamMain extends JFrame implements ActionListener,ItemListener {
+public class TeamMain extends JFrame
+implements ActionListener,ItemListener {
 
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	
+
 
 	/**
 	 * Launch the application.
@@ -84,13 +87,16 @@ public class TeamMain extends JFrame implements ActionListener,ItemListener {
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2);
 		
-		JButton btnNewButton = new JButton("로그인");
-		btnNewButton.setFont(new Font("굴림", Font.PLAIN, 14));
-		panel_2.add(btnNewButton);
+		JButton login = new JButton("로그인");
+		login.addActionListener(this);
+		login.setFont(new Font("굴림", Font.PLAIN, 14));
+		panel_2.add(login);
 		
-		JButton btnNewButton_1 = new JButton("회원가입");
-		btnNewButton_1.setFont(new Font("굴림", Font.PLAIN, 14));
-		panel_2.add(btnNewButton_1);
+		JButton signin = new JButton("회원가입");
+		signin.addActionListener(this);
+		signin.setFont(new Font("굴림", Font.PLAIN, 14));
+		panel_2.add(signin);
+		
 	}
 
 	@Override
@@ -101,7 +107,14 @@ public class TeamMain extends JFrame implements ActionListener,ItemListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
+		
+		String cmd =e.getActionCommand();
+		
+		if(cmd.equals("회원가입")) {
+			new TeamSignIn();
+		}else {
+			
+		}
 		
 	}
 
