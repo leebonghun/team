@@ -6,7 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+//게시글 수정화면
 public class TeamBoardUpdate extends JFrame {
 
 	private JPanel contentPane;

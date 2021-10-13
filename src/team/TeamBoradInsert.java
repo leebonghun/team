@@ -6,7 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+//게시글 입력화면
 public class TeamBoradInsert extends JFrame {
 
 	private JPanel contentPane;

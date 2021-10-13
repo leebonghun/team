@@ -17,7 +17,7 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
-
+//회원가입화면 입력값:아이디,비번,이름,이메일 버튼:회원가입 ,뒤로가기
 public class TeamSignIn extends JFrame  implements ActionListener,ItemListener{
 
 	private JPanel contentPane;

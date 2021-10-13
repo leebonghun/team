@@ -18,7 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
-
+//첫화면  입력값 : 아이디 ,비밀번호  버튼 :로그인,회원가입  
 public class TeamMain extends JFrame
 implements ActionListener,ItemListener {
 

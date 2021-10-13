@@ -6,7 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+//게시글 하나 출력화면
 public class TeamBoardMain extends JFrame {
 
 	private JPanel contentPane;

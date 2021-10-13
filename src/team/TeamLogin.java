@@ -6,7 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
+// 게시판 출력화면 
 public class TeamLogin extends JFrame {
 
 	private JPanel contentPane;
