@@ -21,11 +21,12 @@ import java.awt.FlowLayout;
 public class TeamSignIn extends JFrame  implements ActionListener,ItemListener{
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField txtEmail;
+	private JTextField txtId;
+	private JTextField txtPwd;
+	private JTextField txtName;
 	private JButton btnNewButton,btnNewButton_1;
+	TeamDAO dao =new TeamDAO();
 
 	/**
 	 * Launch the application.
@@ -71,10 +72,10 @@ public class TeamSignIn extends JFrame  implements ActionListener,ItemListener{
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_3.add(lblNewLabel_1);
 		
-		textField_1 = new JTextField();
-		panel_3.add(textField_1);
-		textField_1.addActionListener(this);
-		textField_1.setColumns(10);
+		txtId = new JTextField();
+		panel_3.add(txtId);
+		txtId.addActionListener(this);
+		txtId.setColumns(10);
 		
 		JPanel panel_2 = new JPanel();
 		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
@@ -84,10 +85,10 @@ public class TeamSignIn extends JFrame  implements ActionListener,ItemListener{
 		JLabel lblNewLabel_2 = new JLabel("비밀번호");
 		panel_2.add(lblNewLabel_2);
 		
-		textField_2 = new JTextField();
-		panel_2.add(textField_2);
-		textField_2.addActionListener(this);
-		textField_2.setColumns(10);
+		txtPwd = new JTextField();
+		panel_2.add(txtPwd);
+		txtPwd.addActionListener(this);
+		txtPwd.setColumns(10);
 		
 		JPanel panel_1 = new JPanel();
 		FlowLayout flowLayout_3 = (FlowLayout) panel_1.getLayout();
@@ -97,10 +98,10 @@ public class TeamSignIn extends JFrame  implements ActionListener,ItemListener{
 		JLabel lblNewLabel_3 = new JLabel("이름");
 		panel_1.add(lblNewLabel_3);
 		
-		textField_3 = new JTextField();
-		panel_1.add(textField_3);
-		textField_3.addActionListener(this);
-		textField_3.setColumns(10);
+		txtName = new JTextField();
+		panel_1.add(txtName);
+		txtName.addActionListener(this);
+		txtName.setColumns(10);
 		
 		JPanel panel = new JPanel();
 		FlowLayout flowLayout_4 = (FlowLayout) panel.getLayout();
@@ -110,10 +111,10 @@ public class TeamSignIn extends JFrame  implements ActionListener,ItemListener{
 		JLabel lblNewLabel = new JLabel("이메일");
 		panel.add(lblNewLabel);
 		
-		textField = new JTextField();
-		panel.add(textField);
-		textField.addActionListener(this);
-		textField.setColumns(10);
+		txtEmail = new JTextField();
+		panel.add(txtEmail);
+		txtEmail.addActionListener(this);
+		txtEmail.setColumns(10);
 		
 		JPanel panel_5 = new JPanel();
 		contentPane.add(panel_5);
@@ -138,11 +139,19 @@ public class TeamSignIn extends JFrame  implements ActionListener,ItemListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		TeamDAO dao =new TeamDAO();
+		
 		String cmd =e.getActionCommand();
 		
 		if(cmd.equals("회원가입")) {
+			//사용자 입력값 가져오기			
 			UserDTO newdto= new UserDTO();
+			
+			newdto.setUserID(txtId.getText());
+			newdto.setUserPw(txtPwd.getText());
+			newdto.setUserName(txtName.getText());
+			newdto.setUserEm(txtEmail.getText());
+			
+			
 			dao.insertUser(newdto);
 			
 		}else {
