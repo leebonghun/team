@@ -46,13 +46,13 @@ public class TeamDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				UserDTO dto = new UserDTO();
-				dto.setUserID(rs.getString("UserID"));
-				dto.setUserNm(rs.getInt("UserNm"));
-				dto.setUserPw(rs.getString("UserPw"));
-				dto.setUserName(rs.getString("UserName"));
-				dto.setUserEm(rs.getString("UserEm"));
-				vetList.add(dto);
+				UserDTO userdto = new UserDTO();
+				userdto.setUserID(rs.getString("UserID"));
+				userdto.setUserNm(rs.getInt("UserNm"));
+				userdto.setUserPw(rs.getString("UserPw"));
+				userdto.setUserName(rs.getString("UserName"));
+				userdto.setUserEm(rs.getString("UserEm"));
+				vetList.add(userdto);
 			}
 
 		} catch (Exception e) {
@@ -67,7 +67,7 @@ public class TeamDAO {
 			}
 		}
 		return vetList;
-	}
+	}//select1
 	
 	
 	///board테이블 가져오기
@@ -86,14 +86,14 @@ public class TeamDAO {
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				BoardDTO dto2 = new BoardDTO();
-				dto2.setBoardNm(rs.getInt("BoardNm"));
-				dto2.setBoardTitle(rs.getString("BoardTitle"));
-				dto2.setBoardSub(rs.getString("BoardSub"));
-				dto2.setUserNm(rs.getInt("UserNm"));
-				dto2.setBoardDate(rs.getDate("BoardDate"));
-				dto2.setBoardCount(rs.getInt("BoardCount"));
-				boardList.add(dto2);
+				BoardDTO boarddto = new BoardDTO();
+				boarddto.setBoardNm(rs.getInt("BoardNm"));
+				boarddto.setBoardTitle(rs.getString("BoardTitle"));
+				boarddto.setBoardSub(rs.getString("BoardSub"));
+				boarddto.setUserNm(rs.getInt("UserNm"));
+				boarddto.setBoardDate(rs.getDate("BoardDate"));
+				boarddto.setBoardCount(rs.getInt("BoardCount"));
+				boardList.add(boarddto);
 			}
 
 		} catch (Exception e) {
@@ -108,6 +108,38 @@ public class TeamDAO {
 			}
 		}
 		return boardList;
-	}
+	}//select 2
 	
-}
+	//신입 회원입력
+		public boolean insertUser(UserDTO userinsert) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			boolean insertFlag = false;
+			try {
+				con =getConnection();
+				String sql="insert into userTable(userID,userNm,userPw,userName,userEm)";
+				sql+="values(?,userNm_SEQ,?,?,?)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1,userinsert.getUserID());
+				pstmt.setString(2,userinsert.getUserPw());
+				pstmt.setString(3, userinsert.getUserName());
+				pstmt.setString(4, userinsert.getUserEm());
+				int result=pstmt.executeUpdate();
+				if (result>0) {
+					insertFlag=true;
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					con.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return insertFlag;
+		}
+	
+}//teamdao
