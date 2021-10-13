@@ -1,19 +1,19 @@
 create table userTable 
-(userID varchar2(10) not null unique, 
-userNm number(30) not null primary key,
-userPw varchar2(20) not null,
-userName varchar2(5) not null unique,
-userEm varchar2(30) not null unique);
+(userID varchar2(10) unique, 
+userNm number(30) primary key,
+userPw varchar2(20) ,
+userName varchar2(5) unique,
+userEm varchar2(30) unique);
 
 select * from userTable;
 --
 create table boardTable
-(boardNm number(30) not null,
-boardTitle varchar2(20) not null,
-boardSub varchar2(38) not null,
+(boardNm number(30) ,
+boardTitle varchar2(20) ,
+boardSub varchar2(38) ,
 userNm number(30) REFERENCES userTable(userNm) ON DELETE CASCADE,
-boardDate date not null,
-boardCount number(38) not null);
+boardDate date ,
+boardCount number(38));
 
 create SEQUENCE userNm_SEQ -- 시퀀스를 생성할거야 시퀀스 이름
 --증가를 1씩 할거야 (옵션이야 무조건 줘야 되는 코드가 아니야, 안주면 기본값 1)
