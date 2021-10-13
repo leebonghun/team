@@ -5,7 +5,6 @@ userPw varchar2(20) ,
 userName varchar2(5) unique,
 userEm varchar2(30) unique);
 
-select * from userTable;
 --
 create table boardTable
 (boardNm number(30) ,
