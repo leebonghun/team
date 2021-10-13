@@ -144,7 +144,7 @@ public class TeamSignIn extends JFrame  implements ActionListener,ItemListener{
 		if(cmd.equals("회원가입")) {
 			UserDTO newdto= new UserDTO();
 			dao.insertUser(newdto);
-			System.out.println( "syss "+dao.insertUser(newdto));
+			
 		}else {
 			
 		}
