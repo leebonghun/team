@@ -112,6 +112,7 @@ implements ActionListener,ItemListener {
 		
 		if(cmd.equals("회원가입")) {
 			new TeamSignIn();
+			
 		}else {
 			
 		}

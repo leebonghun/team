@@ -118,7 +118,7 @@ public class TeamDAO {
 			try {
 				con =getConnection();
 				String sql="insert into userTable(userID,userNm,userPw,userName,userEm)";
-				sql+="values(?,userNm_SEQ,?,?,?)";
+				sql+="values(?,userNm_SEQ.nextval,?,?,?)";
 				pstmt=con.prepareStatement(sql);
 				pstmt.setString(1,userinsert.getUserID());
 				pstmt.setString(2,userinsert.getUserPw());
