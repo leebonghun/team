@@ -37,6 +37,7 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 	private JTable table;
 	private JTextField boardNm;
 	private JTextField boardTitle;
+	
 	private JTextField boardDate;
 	private JTextField boardCount;
 	private DefaultTableModel model;
@@ -103,13 +104,24 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 				// TODO Auto-generated method stub
 				new TeamMain();
 				setVisible(false);
-				new TeamLogin();
+				new TeamBoardMain();
 				
 			}
 		});
 		panel_1.add(btnNewButton);
 		
 		btnNewButton_1 = new JButton("로그아웃");
+btnNewButton_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new TeamMain();
+				setVisible(false);
+				new TeamMain();
+				
+			}
+		});
 		panel_1.add(btnNewButton_1);
 		
 		
@@ -167,6 +179,7 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 		
 	}
 
+	
 
 
 }
