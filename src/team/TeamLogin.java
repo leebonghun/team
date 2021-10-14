@@ -31,7 +31,7 @@ import javax.swing.JTabbedPane;
 //게시글 정보 출력 (번호 ,제목 작성자 조회수) => 각각 패널에 디벨로퍼와 연동하기  
 // 글쓰기 기능 버튼 => 누르면 글 쓰기 페이지로 이동 )
 // 로그아웃 기능 버튼 버튼 
-public class TeamLogin extends JFrame implements  ActionListener,ItemListener {
+public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -47,7 +47,7 @@ public class TeamLogin extends JFrame implements  ActionListener,ItemListener {
 	/**
 	 * Launch the application.
 	 */
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -58,7 +58,7 @@ public class TeamLogin extends JFrame implements  ActionListener,ItemListener {
 				}
 			}
 		});
-	}*/
+	}
 
 	/**
 	 * Create the frame.
@@ -95,19 +95,21 @@ public class TeamLogin extends JFrame implements  ActionListener,ItemListener {
 		JLabel lblNewLabel = new JLabel("게시글 정보 ");
 		panel_1.add(lblNewLabel);
 		
-		 btnNewButton = new JButton("글쓰기");
-		 btnNewButton.addActionListener(new ActionListener() {
+		btnNewButton = new JButton("글쓰기");
+		btnNewButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				new TeamBoardMain();
-				setVisible(true);
+				new TeamMain();
+				setVisible(false);
+				new TeamLogin();
+				
 			}
 		});
 		panel_1.add(btnNewButton);
 		
-		 btnNewButton_1 = new JButton("로그아웃");
+		btnNewButton_1 = new JButton("로그아웃");
 		panel_1.add(btnNewButton_1);
 		
 		
