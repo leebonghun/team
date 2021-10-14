@@ -139,11 +139,15 @@ btnNewButton_1.addActionListener(new ActionListener() {
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		panel_3.add(tabbedPane);
+		String[] sub = { "공지사항", "모든 게시글", "가입인사" };
+
+		JList<String> list = new JList<String>(sub);
+		panel_3.add(list);
 		
 		table = new JTable();
-		String list[]= {"번호","제목","작성자","작성일자","조회수"};
+		String list1[]= {"번호","제목","작성자","작성일자","조회수"};
 		
-       model = new DefaultTableModel(list, 0) {
+       model = new DefaultTableModel(list1, 0) {
 			
 			// 셀의 내용을 수정할 수 없게 처리			
 			@Override
