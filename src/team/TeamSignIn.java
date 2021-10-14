@@ -6,13 +6,18 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import lombok.Cleanup;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Vector;
 import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
@@ -139,19 +144,33 @@ public class TeamSignIn extends JFrame  implements ActionListener,ItemListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		
+		Vector<UserDTO> vetList = new Vector<UserDTO>();
 		String cmd =e.getActionCommand();
 		
 		if(cmd.equals("회원가입")) {
 			//사용자 입력값 가져오기			
+			if (txtId.getText().trim().length()==0 || txtPwd.getText().trim().length()==0 || txtName.getText().trim().length()==0 || txtEmail.getText().trim().length()==0  ) {
+				String signin = "회원가입실패";
+				JOptionPane.showMessageDialog(null, signin, "회원가입실패", JOptionPane.WARNING_MESSAGE);
+				
+				
+				
+			}
+			else {
+				
+				String signinfail = "회원가입 성공 ";
+				JOptionPane.showMessageDialog(getParent(), signinfail, "회원가입성공", JOptionPane.OK_CANCEL_OPTION);
+			}
+			
 			UserDTO newdto= new UserDTO();
 			
 			newdto.setUserID(txtId.getText());
+			
 			newdto.setUserPw(txtPwd.getText());
 			newdto.setUserName(txtName.getText());
 			newdto.setUserEm(txtEmail.getText());
 			
-			
+			dao.select1();
 			dao.insertUser(newdto);
 			
 		}else {
