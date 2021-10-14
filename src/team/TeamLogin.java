@@ -19,6 +19,8 @@ import javax.swing.JTextField;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
@@ -29,7 +31,7 @@ import javax.swing.JTabbedPane;
 //게시글 정보 출력 (번호 ,제목 작성자 조회수) => 각각 패널에 디벨로퍼와 연동하기  
 // 글쓰기 기능 버튼 => 누르면 글 쓰기 페이지로 이동 )
 // 로그아웃 기능 버튼 버튼 
-public class TeamLogin extends JFrame {
+public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -40,6 +42,7 @@ public class TeamLogin extends JFrame {
 	private JTextField boardCount;
 	private DefaultTableModel model;
 	private BoardDTO dao;
+	private JButton btnNewButton,btnNewButton_1;
 
 
 	/**
@@ -93,10 +96,21 @@ public class TeamLogin extends JFrame {
 		JLabel lblNewLabel = new JLabel("게시글 정보 ");
 		panel_1.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("글쓰기");
+		btnNewButton = new JButton("글쓰기");
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				new TeamMain();
+				setVisible(false);
+				new TeamLogin();
+				
+			}
+		});
 		panel_1.add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("로그아웃");
+		btnNewButton_1 = new JButton("로그아웃");
 		panel_1.add(btnNewButton_1);
 		
 		
@@ -132,6 +146,8 @@ public class TeamLogin extends JFrame {
 		
 		dao = new BoardDTO();
 		showTable();
+		
+		setVisible(true);
 
 	}
 
@@ -140,6 +156,20 @@ public class TeamLogin extends JFrame {
 		
 	}
 
+	@Override
+	public void itemStateChanged(ItemEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }
+
+
