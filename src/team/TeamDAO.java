@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Vector;
 
 public class TeamDAO {
+	
+	Vector<UserDTO> vetList = new Vector<UserDTO>();
  //adasd
 	static {
 		try {
@@ -35,7 +38,7 @@ public class TeamDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		Vector<UserDTO> vetList = new Vector<UserDTO>();
+		
 
 		try {
 
@@ -140,6 +143,49 @@ public class TeamDAO {
 				}
 			}
 			return insertFlag;
-		}
+		}//insertuser
+		
+		
+//		  private boolean idCheck(String id) {
+//		        boolean check = true;
+//		        UserDTO member = FindById(id);
+//		        if(member == null)
+//		            check = false;
+//		        return check;
+//		    }
+
+//		private UserDTO FindById(String id) {
+//			for (UserDTO userdto : vetList ) {
+//				if (userdto.getUserID().equals(id)) {
+//					return userdto;
+//				}
+//			}
+//			return null;
+//		}
+		
+		
+//		public boolean idCheck(String id ) {
+//			Connection con = null;
+//			PreparedStatement pstmt = null;
+//			ResultSet rs = null;
+//			
+//			boolean result=true;
+//			
+//			try {
+//				pstmt=con.prepareStatement("Select * from UserTable where Userid");
+//				pstmt.setString(1, id.trim());
+//				rs=pstmt.executeQuery();
+//				if (rs.next()) {
+//					result=false;
+//				}
+//			} catch (SQLException e) {
+//				
+//			}finally {
+//				
+//			}
+//			return result;
+//		}//idcheck
+	
+		
 	
 }//teamdao
