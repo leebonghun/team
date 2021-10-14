@@ -35,6 +35,7 @@ public class TeamLogin extends JFrame {
 	private JTable table;
 	private JTextField boardNm;
 	private JTextField boardTitle;
+	
 	private JTextField boardDate;
 	private JTextField boardCount;
 	private DefaultTableModel model;
