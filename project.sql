@@ -37,3 +37,5 @@ maxvalue 38 --  최대 얼마까지 증가를 시킬꺼야?? 옵션(기본값 10
 minvalue 0 -- 옵션(기본값은 1)
 nocycle cache 2;
 
+ALTER TABLE userTable  MODIFY userID varchar2(38);
+ALTER TABLE userTable  MODIFY userName varchar2(38);
