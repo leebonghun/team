@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import lombok.Cleanup;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -150,7 +153,7 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 
 			for (UserDTO userdto : vetList) {
 				if (userdto.getUserID().equals(txtId.getText())) {
-					
+
 					String signinfall2 = "이미존재하는 아이디 입니다.";
 					JOptionPane.showMessageDialog(getParent(), signinfall2, "회원가입실패", JOptionPane.WARNING_MESSAGE);
 
@@ -172,13 +175,27 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 				new TeamLogin();
 			}
 
-			newdto.setUserID(txtId.getText());
-			newdto.setUserPw(txtPwd.getText());
-			newdto.setUserName(txtName.getText());
-			newdto.setUserEm(txtEmail.getText());
+			if (cmd.equals("회원가입")) {
+				// 사용자 입력값 가져오기
+				if (txtId.getText().trim().length() == 0 || txtPwd.getText().trim().length() == 0
+						|| txtName.getText().trim().length() == 0 || txtEmail.getText().trim().length() == 0) {
+					String signin = "회원가입실패";
+					JOptionPane.showMessageDialog(null, signin, "회원가입실패", JOptionPane.WARNING_MESSAGE);
 
-			dao.insertUser(newdto);
-		} else {
+				}
+
+				newdto.setUserID(txtId.getText());
+
+				newdto.setUserPw(txtPwd.getText());
+				newdto.setUserName(txtName.getText());
+				newdto.setUserEm(txtEmail.getText());
+
+				dao.select1();
+				dao.insertUser(newdto);
+
+			} else {
+
+			}
 
 		}
 
