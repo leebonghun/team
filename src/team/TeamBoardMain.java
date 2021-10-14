@@ -112,6 +112,9 @@ public class TeamBoardMain extends JFrame {
 		
 		JButton btnNewButton_2 = new JButton("취소");
 		panel_2.add(btnNewButton_2);
+	
+		setVisible(true);
 	}
+	
 
 }

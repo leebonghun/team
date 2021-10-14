@@ -106,9 +106,11 @@ implements ActionListener,ItemListener {
         signin.addActionListener(this);
         signin.setFont(new Font("굴림", Font.PLAIN, 14));
         panel_2.add(signin);
-        
+    
+        setVisible(true);
     }
 
+    
     @Override
     public void itemStateChanged(ItemEvent e) {
         
