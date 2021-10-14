@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 //게시글 입력화면
-public class TeamBoradInsert extends JFrame {
+public class TeamBoardInsert extends JFrame {
 
 	private JPanel contentPane;
 
@@ -18,7 +18,7 @@ public class TeamBoradInsert extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TeamBoradInsert frame = new TeamBoradInsert();
+					TeamBoardInsert frame = new TeamBoardInsert();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -30,7 +30,7 @@ public class TeamBoradInsert extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public TeamBoradInsert() {
+	public TeamBoardInsert() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
