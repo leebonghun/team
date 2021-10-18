@@ -132,6 +132,7 @@ implements ActionListener,ItemListener {
             
             
         }else if(cmd.equals("로그인")) {
+
            if(dao.loginUser(username, password)) {
            JOptionPane.showMessageDialog(null, "로그인성공");
            new TeamLogin();
@@ -140,6 +141,9 @@ implements ActionListener,ItemListener {
            JOptionPane.showMessageDialog(null, "로그인실패");
            
            }
+
+        	
+
         }
            
               

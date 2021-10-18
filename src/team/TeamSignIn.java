@@ -166,6 +166,7 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
       
    
 
+<<<<<<< HEAD
       if (cmd.equals("회원가입")) {
          
          // 사용자 입력값 가져오기
@@ -175,7 +176,20 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
             JOptionPane.showMessageDialog(null, signin, "회원가입실패", JOptionPane.WARNING_MESSAGE);
          } 
       else {
+=======
+		if (cmd.equals("회원가입")) {
+			
+			// 사용자 입력값 가져오기
+			 if (txtId.getText().trim().length() == 0 || txtPwd.getText().trim().length() == 0
+					|| txtName.getText().trim().length() == 0 || txtEmail.getText().trim().length() == 0) {
+				String signin = "회원가입실패";
+				JOptionPane.showMessageDialog(null, signin, "회원가입실패", JOptionPane.WARNING_MESSAGE);
+				
+			} 
+		else {
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 
+<<<<<<< HEAD
             String signinfail = "회원가입 성공 ";
             JOptionPane.showMessageDialog(getParent(), signinfail, "회원가입성공", JOptionPane.OK_CANCEL_OPTION);
             dispose();
@@ -183,15 +197,38 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
            
          }
          newdto.setUserID(txtId.getText());
+=======
+				String signinfail = "회원가입 성공 ";
+				
+				JOptionPane.showMessageDialog(getParent(), signinfail, "회원가입성공", JOptionPane.OK_CANCEL_OPTION);
+				dispose();
+				new TeamMain();
+				
+			}
+			newdto.setUserID(txtId.getText());
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 
          newdto.setUserPw(txtPwd.getText());
          newdto.setUserName(txtName.getText());
          newdto.setUserEm(txtEmail.getText());
 
+<<<<<<< HEAD
          
          dao.insertUser(newdto);
       }
       }
+=======
+			
+			dao.insertUser(newdto);
+			
+			
+		}
+		
+		dispose();
+		
+	     
+		}
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 
 
 }

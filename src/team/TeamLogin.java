@@ -1,3 +1,4 @@
+
 package team;
 
 import java.awt.BorderLayout;
@@ -21,6 +22,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
@@ -34,7 +37,12 @@ import java.awt.Color;
 // 글쓰기 기능 버튼 => 누르면 글 쓰기 페이지로 이동 )
 // 로그아웃 기능 버튼 버튼 
 
+<<<<<<< HEAD
 public class TeamLogin extends JFrame implements ActionListener, ItemListener {
+=======
+
+public class TeamLogin extends JFrame implements ActionListener,ItemListener,MouseListener {
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 
 	private JPanel contentPane;
 	private JTable table;
@@ -46,10 +54,15 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener {
 	private DefaultTableModel model;
 	private TeamDAO dao;
 	private JTable table_1;
+<<<<<<< HEAD
+=======
+	private int userNm;
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 
 	/**
 	 * Launch the application.
 	 */
+<<<<<<< HEAD
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -65,6 +78,24 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener {
 
 	// 기본 전체 화면 패널
 	public TeamLogin() {
+=======
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					TeamLogin frame = new TeamLogin();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+//
+//	
+	//기본 전체 화면 패널 
+	public TeamLogin(int userNm) {
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 1000);
 
@@ -118,18 +149,33 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener {
 		// 맨밑 게시판목록 알림과 글쓰기 ,로그아웃 버튼
 		JLabel lblNewLabel = new JLabel("익명게시판 목록");
 		panel_1.add(lblNewLabel);
+<<<<<<< HEAD
 
 		// 글쓰기 버튼과 누를시 게시물 작성으로 이동
+=======
+		
+		
+		
+		this.userNm=userNm;
+		
+		
+		//글쓰기 버튼과 누를시 게시물 작성으로 이동 
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 		JButton btnNewButton = new JButton("글쓰기");
 		btnNewButton.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				new TeamMain();
+				
 				setVisible(false);
+<<<<<<< HEAD
 				new TeamBoardMain();
 
+=======
+				
+				new TeamBoardInsert(userNm);
+				
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 			}
 		});
 
@@ -159,8 +205,13 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener {
 
 	}
 
+<<<<<<< HEAD
 	private void showTable() {
 		// TODO Auto-generated method stub
+=======
+		private void showTable() {
+		// "번호","제목","작성자","작성일자","조회수"
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 		Vector<BoardDTO> vecList = dao.select2();
 		if (!vecList.isEmpty()) {
 			for (BoardDTO dto : vecList) {
@@ -190,4 +241,49 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener {
 
 	}
 
+<<<<<<< HEAD
+=======
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+
+	
+	
+	}
+
+	
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
