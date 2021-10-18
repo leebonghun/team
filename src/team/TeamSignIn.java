@@ -150,7 +150,7 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 		UserDTO newdto = new UserDTO();
 		Vector<UserDTO> vetList = new Vector<UserDTO>();
 		if (cmd.equals("회원가입")) {
-
+			//중복확인
 			for (UserDTO userdto : vetList) {
 				if (userdto.getUserID().equals(txtId.getText())) {
 
@@ -172,11 +172,12 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 
 				String signin = "회원가입에 성공하셨습니다. ";
 				JOptionPane.showMessageDialog(getParent(), signin, "회원가입 성공", JOptionPane.OK_CANCEL_OPTION);
+				dispose();
 				new TeamLogin();
+				
 			}
 
 			newdto.setUserID(txtId.getText());
-
 			newdto.setUserPw(txtPwd.getText());
 			newdto.setUserName(txtName.getText());
 			newdto.setUserEm(txtEmail.getText());
@@ -184,8 +185,9 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 			dao.select1();
 			dao.insertUser(newdto);
 
-		} else {
-
+		} else if (cmd.equals("뒤로가기")) {
+			dispose();
+			new TeamMain();
 		}
 
 	}// actionPerformed
