@@ -146,8 +146,8 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 				
 				model.addRow(newVec);
 			}	
-			}
-		
+		}
+
 	}
 
 	@Override
@@ -166,5 +166,3 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 
 
 }
-
-
