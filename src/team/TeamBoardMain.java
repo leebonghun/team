@@ -122,7 +122,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		BoardDTO dto = dao.select3();
 		textField.setText(dto.getBoardTitle());
-		
+		textField_1.setText(toString(dto.getUserNm());
 		textArea.setText(dto.getBoardSub());
 		}
 		

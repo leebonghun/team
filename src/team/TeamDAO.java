@@ -127,7 +127,7 @@ public class TeamDAO {
 
 			con = getConnection();
 
-			String sql = "select * from BoardTable";
+			String sql = "select * from BoardTable where userNm = ?";
 
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -135,7 +135,9 @@ public class TeamDAO {
 					
 			while (rs.next()) {
 				boarddto.setBoardTitle(rs.getString("BoardTitle"));
+				boarddto.setUserNm(rs.getInt("userNm"));
 				boarddto.setBoardSub(rs.getString("BoardSub"));
+				
 				boardList.add(boarddto);
 			}
 
