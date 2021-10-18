@@ -24,7 +24,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.DropMode;
 //게시글 하나 출력화면
-public class TeamBoardMain extends JFrame {
+public class TeamBoardMain extends JFrame { 
 
 	private JPanel contentPane;
 	private JTextField textField;
