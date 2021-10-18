@@ -10,6 +10,9 @@ import javax.swing.JMenu;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
+
+import sun.awt.ModalExclude;
+
 import javax.swing.JScrollBar;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -21,6 +24,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
@@ -35,7 +40,7 @@ import java.awt.Color;
 // 로그아웃 기능 버튼 버튼 
 
 
-public class TeamLogin extends JFrame implements ActionListener,ItemListener {
+public class TeamLogin extends JFrame implements ActionListener,ItemListener, MouseListener {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -80,11 +85,11 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 		panel.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(panel, BorderLayout.WEST);
 		
-		// 왼쪽 목록 부분
-		String[] sub = { "공지사항", "모든 게시글", "가입인사" };
-
-		JList<String> list = new JList<String>(sub);
-		panel.add(list);
+//		// 왼쪽 목록 부분
+//		String[] sub = { "공지사항", "모든 게시글", "가입인사" };
+//
+//		JList<String> list = new JList<String>(sub);
+//		panel.add(list);
 		
 
 		
@@ -144,7 +149,7 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 		panel_1.add(btnNewButton);
 		//로그아웃 버튼과 누름시 메인화면 이동
 		JButton btnNewButton_1 = new JButton("로그아웃");
-btnNewButton_1.addActionListener(new ActionListener() {
+		btnNewButton_1.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -198,6 +203,43 @@ btnNewButton_1.addActionListener(new ActionListener() {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		if(e.getButton()== 1) {
+			new TeamBoardMain() ;
+				
+		}
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
