@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -14,11 +16,10 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 //게시글 수정화면
-public class TeamBoardUpdate extends JFrame {
+public class TeamBoardUpdate extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -67,7 +68,9 @@ public class TeamBoardUpdate extends JFrame {
 		
 		textField = new JTextField();
 		panel_3.add(textField);
+		textField.addActionListener(this);
 		textField.setColumns(10);
+		
 		
 		JPanel panel_5 = new JPanel();
 		panel.add(panel_5);
@@ -76,9 +79,8 @@ public class TeamBoardUpdate extends JFrame {
 		JLabel lblNewLabel_3 = new JLabel("작성자");
 		panel_5.add(lblNewLabel_3);
 		
-		textField_2 = new JTextField();
-		panel_5.add(textField_2);
-		textField_2.setColumns(10);
+		JLabel lblNewLabel_4 = new JLabel("");
+		panel_5.add(lblNewLabel_4);
 		
 		JPanel panel_4 = new JPanel();
 		panel.add(panel_4);
@@ -104,6 +106,15 @@ public class TeamBoardUpdate extends JFrame {
 		
 		JButton btnNewButton_1 = new JButton("삭제");
 		panel_2.add(btnNewButton_1);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		//제목
+		
+		
+		//내용
+		
 	}
 
 }
