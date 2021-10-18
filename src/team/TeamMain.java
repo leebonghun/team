@@ -15,12 +15,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
+
 //첫화면  입력값 : 아이디 ,비밀번호  버튼 :로그인,회원가입  
 public class TeamMain extends JFrame
 implements ActionListener,ItemListener {
@@ -74,6 +76,7 @@ implements ActionListener,ItemListener {
         panel_3.add(lblNewLabel_1);
         
         textField = new JTextField();
+        textField.addActionListener(this);
         panel_3.add(textField);
         textField.setColumns(10);
         
@@ -85,6 +88,7 @@ implements ActionListener,ItemListener {
         panel_1.add(lblNewLabel_2);
         
         textField_1 = new JTextField();
+        textField_1.addActionListener(this);
         panel_1.add(textField_1);
         textField_1.setColumns(10);
         
@@ -92,17 +96,8 @@ implements ActionListener,ItemListener {
         contentPane.add(panel_2);
         
         JButton login = new JButton("로그인");
-        login.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				new TeamMain();
-				setVisible(false);
-				new TeamLogin();
-				
-			}
-		});
+        login.addActionListener(this);
+		
         login.setFont(new Font("굴림", Font.PLAIN, 14));
         panel_2.add(login);
         
@@ -123,19 +118,33 @@ implements ActionListener,ItemListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        
+        Object obj1 = e.getSource();
+        Vector<UserDTO> dao1 = new Vector<UserDTO>();
         String cmd =e.getActionCommand();
-        
+    	String username = textField.getText();
+    	String password = textField_1.getText();
+    	
+      
         if(cmd.equals("회원가입")) {
             new TeamSignIn();
             
+        }else if(cmd.equals("로그인")) {
+        	if(dao.loginUser(username, password)) {
+        	JOptionPane.showMessageDialog(null, "로그인성공");
+        	new TeamLogin();
+        	}
+        	else {
+        	JOptionPane.showMessageDialog(null, "로그인실패");
+        	
+        	}
         }
-		
-        
-     
-		
+        	
+        		
+			
+        }
+	
             
-        }
+       }
         
-    }
+ 
 
