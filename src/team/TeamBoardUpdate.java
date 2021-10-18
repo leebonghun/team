@@ -93,7 +93,6 @@ public class TeamBoardUpdate extends JFrame {
 		
 		JTextArea textArea = new JTextArea();
 		panel_1.add(textArea);
-		
 		JPanel panel_2 = new JPanel();
 		contentPane.add(panel_2, BorderLayout.SOUTH);
 		
