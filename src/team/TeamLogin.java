@@ -81,10 +81,10 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 		contentPane.add(panel, BorderLayout.WEST);
 		
 		// 왼쪽 목록 부분
-		String[] sub = { "공지사항", "모든 게시글", "가입인사" };
+		/*String[] sub = { "공지사항", "모든 게시글", "가입인사" };
 
 		JList<String> list = new JList<String>(sub);
-		panel.add(list);
+		panel.add(list);*/
 		
 
 		
@@ -144,7 +144,7 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 		panel_1.add(btnNewButton);
 		//로그아웃 버튼과 누름시 메인화면 이동
 		JButton btnNewButton_1 = new JButton("로그아웃");
-btnNewButton_1.addActionListener(new ActionListener() {
+		btnNewButton_1.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -182,7 +182,6 @@ btnNewButton_1.addActionListener(new ActionListener() {
 				
 				model.addRow(newVec);
 			}	
-
 			}
 
 		}
