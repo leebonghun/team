@@ -188,24 +188,22 @@ public class TeamDAO {
 	
 	
 	//로그인함수
-	public boolean loginUser(String username,String password) {
+	public int loginUser(String userId,String password) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean loginFlag = false;
 		try {
 			con =getConnection();
-			String sql="select UserPw from userTable where UserID = ?";
+			String sql="select userNm from userTable where UserID = ? and userpw=?";
 			
 			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,username);
-			
+			pstmt.setString(1,userId);
+			pstmt.setString(2,password);
 			
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
-				if(rs.getString("UserPw").equals(password)) {
-					loginFlag =true;
-				}
+				return rs.getInt(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -217,7 +215,7 @@ public class TeamDAO {
 				e2.printStackTrace();
 			}
 		}
-		return loginFlag;
+		return 0;
 	}//insertuser
 	
 	//신입 회원입력
@@ -286,6 +284,34 @@ public class TeamDAO {
 			return idflag;
 			}
 	
-		
+		public boolean insertBoard(BoardDTO boardinsert) {
+            Connection con = null;
+            PreparedStatement pstmt = null;
+            boolean insertFlag = false;
+            try {
+                con =getConnection();
+                String sql="insert into boardTable(boardnm,boardtitle,boardSUB,usernm,boarddate,boardcount)";
+                sql+="values(boardnm_seq.nextval,?,?,?,sysdate,0)";
+                pstmt=con.prepareStatement(sql);
+                pstmt.setString(1,boardinsert.getBoardTitle());
+                pstmt.setString(2,boardinsert.getBoardSub());
+                pstmt.setInt(3,boardinsert.getUserNm());
+                int result=pstmt.executeUpdate();
+                if (result>0) {
+                    insertFlag=true;
+
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    pstmt.close();
+                    con.close();
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+            }
+            return insertFlag;
+        }//insertboard
 	
 }//teamdao

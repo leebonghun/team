@@ -171,12 +171,16 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 					|| txtName.getText().trim().length() == 0 || txtEmail.getText().trim().length() == 0) {
 				String signin = "회원가입실패";
 				JOptionPane.showMessageDialog(null, signin, "회원가입실패", JOptionPane.WARNING_MESSAGE);
+				
 			} 
 		else {
 
 				String signinfail = "회원가입 성공 ";
+				
 				JOptionPane.showMessageDialog(getParent(), signinfail, "회원가입성공", JOptionPane.OK_CANCEL_OPTION);
-				new TeamLogin();
+				dispose();
+				new TeamMain();
+				
 			}
 			newdto.setUserID(txtId.getText());
 
@@ -186,7 +190,13 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 
 			
 			dao.insertUser(newdto);
+			
+			
 		}
+		
+		dispose();
+		
+	     
 		}
 
 

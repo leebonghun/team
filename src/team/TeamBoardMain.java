@@ -106,24 +106,15 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 		contentPane.add(panel_2, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("목록");
-		btnNewButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				new TeamLogin();
-				setVisible(true);
-			}
-		});
 		panel_2.add(btnNewButton);
 		setVisible(true);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		BoardDTO dto = dao.select3();
-		textField.setText(dto.getBoardTitle());
-		textField_1.setText(toString(dto.getUserNm());
-		textArea.setText(dto.getBoardSub());
+		BoardDTO dto = new BoardDTO();
+		dto.setBoardTitle(textField.getText());
+		dto.setBoardSub(textArea.getText());
 		}
 		
 	}

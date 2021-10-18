@@ -10,9 +10,6 @@ import javax.swing.JMenu;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
-
-import sun.awt.ModalExclude;
-
 import javax.swing.JScrollBar;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -40,7 +37,7 @@ import java.awt.Color;
 // 로그아웃 기능 버튼 버튼 
 
 
-public class TeamLogin extends JFrame implements ActionListener,ItemListener, MouseListener {
+public class TeamLogin extends JFrame implements ActionListener,ItemListener,MouseListener {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -52,27 +49,27 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener, Mo
 	private DefaultTableModel model;
 	private TeamDAO dao;
 	private JTable table_1;
-
+	private int userNm;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					TeamLogin frame = new TeamLogin();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					TeamLogin frame = new TeamLogin();
+//					frame.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+//
+//	
 	//기본 전체 화면 패널 
-	public TeamLogin() {
+	public TeamLogin(int userNm) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 1000);
 
@@ -85,11 +82,11 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener, Mo
 		panel.setBackground(Color.LIGHT_GRAY);
 		contentPane.add(panel, BorderLayout.WEST);
 		
-//		// 왼쪽 목록 부분
-//		String[] sub = { "공지사항", "모든 게시글", "가입인사" };
-//
-//		JList<String> list = new JList<String>(sub);
-//		panel.add(list);
+		// 왼쪽 목록 부분
+		String[] sub = { "공지사항", "모든 게시글", "가입인사" };
+
+		JList<String> list = new JList<String>(sub);
+		panel.add(list);
 		
 
 		
@@ -113,6 +110,38 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener, Mo
 		contentPane.add(scrollPane_1, BorderLayout.CENTER);
 		
 		table_1 = new JTable();
+		table_1.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new TeamBoardMain();
+				setVisible(true);
+			}
+		});
 		table_1.setForeground(Color.PINK);
 		String list1[]= {"번호","제목","작성자","작성일자","조회수"};
 		  model = new DefaultTableModel(list1, 0) {
@@ -131,16 +160,21 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener, Mo
 		JLabel lblNewLabel = new JLabel("익명게시판 목록");
 		panel_1.add(lblNewLabel);
 		
+		
+		
+		this.userNm=userNm;
+		
+		
 		//글쓰기 버튼과 누를시 게시물 작성으로 이동 
 		JButton btnNewButton = new JButton("글쓰기");
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				new TeamMain();
+				
 				setVisible(false);
-				new TeamBoardMain();
+				
+				new TeamBoardInsert(userNm);
 				
 			}
 		});
@@ -149,7 +183,7 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener, Mo
 		panel_1.add(btnNewButton);
 		//로그아웃 버튼과 누름시 메인화면 이동
 		JButton btnNewButton_1 = new JButton("로그아웃");
-		btnNewButton_1.addActionListener(new ActionListener() {
+btnNewButton_1.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -174,7 +208,7 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener, Mo
 	}
 
 		private void showTable() {
-		// TODO Auto-generated method stub
+		// "번호","제목","작성자","작성일자","조회수"
 		Vector<BoardDTO> vecList = dao.select2();
 			if(!vecList.isEmpty()) {
 			for(BoardDTO dto : vecList) {
@@ -210,10 +244,8 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener, Mo
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(e.getButton()== 1) {
-			new TeamBoardMain() ;
-				
-		}
+		// TODO Auto-generated method stub
+		
 	}
 
 
@@ -240,10 +272,10 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener, Mo
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+
+	
+	
 	}
 
 	
 }
-

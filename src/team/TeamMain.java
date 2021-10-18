@@ -130,9 +130,12 @@ implements ActionListener,ItemListener {
             new TeamSignIn();
             
         }else if(cmd.equals("로그인")) {
-        	if(dao.loginUser(username, password)) {
-        	JOptionPane.showMessageDialog(null, "로그인성공");
-        	new TeamLogin();
+        	int userNm=dao.loginUser(username, password);
+        	if(userNm!=0){
+        		JOptionPane.showMessageDialog(null, "로그인성공"); 
+        	
+        	dispose();
+        		new TeamLogin(userNm); 
         	}
         	else {
         	JOptionPane.showMessageDialog(null, "로그인실패");
