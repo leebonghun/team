@@ -1,4 +1,3 @@
-
 package team;
 
 import java.awt.BorderLayout;
@@ -108,10 +107,15 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 		contentPane.add(panel, BorderLayout.WEST);
 
 		// 왼쪽 목록 부분
-		String[] sub = { "공지사항", "모든 게시글", "가입인사" };
+		/*String[] sub = { "공지사항", "모든 게시글", "가입인사" };
 
 		JList<String> list = new JList<String>(sub);
+<<<<<<< HEAD
 		panel.add(list);
+=======
+		panel.add(list);*/
+		
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 
 		// 중앙 스크롤 패인 (게시물 작성후 등록되서 보이는 목록들)
 		JScrollPane scrollPane = new JScrollPane();
@@ -133,15 +137,63 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 
 		table_1 = new JTable();
 		table_1.setForeground(Color.PINK);
+<<<<<<< HEAD
 		String list1[] = { "번호", "제목", "작성자", "작성일자", "조회수" };
 		model = new DefaultTableModel(list1, 0) {
 			// 셀의 내용을 수정할 수 없게 처리
+=======
+		String list1[]= {"번호","제목","작성자","작성일자","조회수"};
+		model = new DefaultTableModel(list1, 0) {
+			// 셀의 내용을 수정할 수 없게 처리			
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			};
 		};
+<<<<<<< HEAD
 
+=======
+		table_1.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Integer no=(Integer)table_1.getModel().getValueAt(table_1.getSelectedRow(), 0);
+				
+				
+				new TeamBoardMain(no);
+				setVisible(true);
+			}
+		});
+		
+		
+		
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 
@@ -181,7 +233,11 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 		// 로그아웃 버튼과 누름시 메인화면 이동
 		JButton btnNewButton_1 = new JButton("로그아웃");
 		btnNewButton_1.addActionListener(new ActionListener() {
+<<<<<<< HEAD
 
+=======
+			
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
@@ -218,8 +274,14 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 				newVec.add(dto.getUserNm());
 				newVec.add(dto.getBoardDate());
 				newVec.add(dto.getBoardCount());
+<<<<<<< HEAD
 
 				model.addRow(newVec);
+=======
+				
+				model.addRow(newVec);
+			}	
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 			}
 
 		}
@@ -276,9 +338,13 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 	}
 
 	
+<<<<<<< HEAD
 
 }
 
 
 
 
+=======
+}
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
