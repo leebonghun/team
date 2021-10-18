@@ -34,16 +34,14 @@ import javax.swing.JTabbedPane;
 public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 
 	private JPanel contentPane;
-	private JTable table;
 	private JTextField boardNm;
 	private JTextField boardTitle;
-	
+	private JTextField userNm;
 	private JTextField boardDate;
 	private JTextField boardCount;
 	private DefaultTableModel model;
-	private BoardDTO dao;
-	private JButton btnNewButton,btnNewButton_1;
-
+	private TeamDAO dao;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -72,23 +70,18 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new BorderLayout(0, 0));
-
+		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.WEST);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		panel.add(scrollPane);
+
 		// 목록 부분
 //		String[] sub = { "공지사항", "모든 게시글", "가입인사" };
 //
 //		JList<String> list = new JList<String>(sub);
 //		panel.add(list);
-
-		
-		
-		JScrollPane scrollPane = new JScrollPane();
-		panel.add(scrollPane);
-		
-		
-
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -96,32 +89,10 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 		JLabel lblNewLabel = new JLabel("게시글 정보 ");
 		panel_1.add(lblNewLabel);
 		
-		btnNewButton = new JButton("글쓰기");
-		btnNewButton.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				new TeamMain();
-				setVisible(false);
-				new TeamBoardMain();
-				
-			}
-		});
+		JButton btnNewButton = new JButton("글쓰기");
 		panel_1.add(btnNewButton);
 		
-		btnNewButton_1 = new JButton("로그아웃");
-btnNewButton_1.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				new TeamMain();
-				setVisible(false);
-				new TeamMain();
-				
-			}
-		});
+		JButton btnNewButton_1 = new JButton("로그아웃");
 		panel_1.add(btnNewButton_1);
 		
 		
@@ -139,27 +110,22 @@ btnNewButton_1.addActionListener(new ActionListener() {
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		panel_3.add(tabbedPane);
-		String[] sub = { "공지사항", "모든 게시글", "가입인사" };
 
-		JList<String> list = new JList<String>(sub);
-		panel_3.add(list);
-		
+
 		table = new JTable();
 		String list1[]= {"번호","제목","작성자","작성일자","조회수"};
 		
        model = new DefaultTableModel(list1, 0) {
-			
 			// 셀의 내용을 수정할 수 없게 처리			
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
-			}
+			};
 		};
-		table.setModel(model);		
-		scrollPane.setViewportView(table);		
 		
-		
-		dao = new BoardDTO();
+		scrollPane.setViewportView(table);
+		table.setModel(model);
+		dao = new TeamDAO();
 		showTable();
 		
 		setVisible(true);
@@ -168,6 +134,19 @@ btnNewButton_1.addActionListener(new ActionListener() {
 
 	private void showTable() {
 		// TODO Auto-generated method stub
+		Vector<BoardDTO> vecList = dao.select2();
+			if(!vecList.isEmpty()) {
+			for(BoardDTO dto : vecList) {
+				Vector<Object> newVec = new Vector<Object>();
+				newVec.add(dto.getBoardNm());
+				newVec.add(dto.getBoardTitle());
+				newVec.add(dto.getUserNm());
+				newVec.add(dto.getBoardDate());
+				newVec.add(dto.getBoardCount());
+				
+				model.addRow(newVec);
+			}	
+			}
 		
 	}
 
