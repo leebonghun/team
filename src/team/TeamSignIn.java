@@ -31,7 +31,7 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 	private JTextField txtId;
 	private JTextField txtPwd;
 	private JTextField txtName;
-	private JButton btnNewButton, btnNewButton_1;
+	private JButton btnNewButton, btnNewButton_1, btnNewButton_2;
 	TeamDAO dao = new TeamDAO();
 
 	/**
@@ -82,6 +82,21 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 		panel_3.add(txtId);
 		txtId.addActionListener(this);
 		txtId.setColumns(10);
+
+		btnNewButton_2 = new JButton("중복체크");
+		btnNewButton_2.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String id = txtId.getText();
+				if (dao.idCheck(id)) {
+					JOptionPane.showMessageDialog(null, "중복된 아이디");
+				}
+			}
+		});
+
+		panel_3.add(btnNewButton_2);
 
 		JPanel panel_2 = new JPanel();
 		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
@@ -144,52 +159,49 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		String cmd = e.getActionCommand();
-
 		UserDTO newdto = new UserDTO();
-		Vector<UserDTO> vetList = new Vector<UserDTO>();
+		String cmd = e.getActionCommand();
+		
+	
+
 		if (cmd.equals("회원가입")) {
-
-			for (UserDTO userdto : vetList) {
-				if (userdto.getUserID().equals(txtId.getText())) {
-
-					String signinfall2 = "이미존재하는 아이디 입니다.";
-					JOptionPane.showMessageDialog(getParent(), signinfall2, "회원가입실패", JOptionPane.WARNING_MESSAGE);
-
-				}
-			}
-
+			
 			// 사용자 입력값 가져오기
-			if (txtId.getText().trim().length() == 0 || txtPwd.getText().trim().length() == 0
+			 if (txtId.getText().trim().length() == 0 || txtPwd.getText().trim().length() == 0
 					|| txtName.getText().trim().length() == 0 || txtEmail.getText().trim().length() == 0) {
-				String signinfall = "모든값을 입력해주세여";
-				JOptionPane.showMessageDialog(null, signinfall, "회원가입실패", JOptionPane.WARNING_MESSAGE);
+				String signin = "회원가입실패";
+				JOptionPane.showMessageDialog(null, signin, "회원가입실패", JOptionPane.WARNING_MESSAGE);
+			} 
+		else {
 
-			}
-
-			else {
-
-				String signin = "회원가입에 성공하셨습니다. ";
-				JOptionPane.showMessageDialog(getParent(), signin, "회원가입 성공", JOptionPane.OK_CANCEL_OPTION);
+				String signinfail = "회원가입 성공 ";
+				JOptionPane.showMessageDialog(getParent(), signinfail, "회원가입성공", JOptionPane.OK_CANCEL_OPTION);
 				new TeamLogin();
 			}
-
 			newdto.setUserID(txtId.getText());
 
 			newdto.setUserPw(txtPwd.getText());
 			newdto.setUserName(txtName.getText());
 			newdto.setUserEm(txtEmail.getText());
 
-			dao.select1();
+			
 			dao.insertUser(newdto);
+<<<<<<< HEAD
 
 			
 		}else {
 			
 		
 			
+=======
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 		}
+<<<<<<< HEAD
 		
 	}
+=======
+		}
+
+
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 }
