@@ -1,4 +1,3 @@
-
 package team;
 
 import java.awt.BorderLayout;
@@ -248,5 +247,3 @@ btnNewButton_1.addActionListener(new ActionListener() {
 
 	
 }
-
-
