@@ -182,8 +182,13 @@ btnNewButton_1.addActionListener(new ActionListener() {
 				
 				model.addRow(newVec);
 			}	
+
 			}
-	}
+
+		}
+
+
+	
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
@@ -198,6 +203,5 @@ btnNewButton_1.addActionListener(new ActionListener() {
 	}
 
 	
-
-
 }
+
