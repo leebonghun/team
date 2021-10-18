@@ -33,11 +33,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.DropMode;
 
 //게시글 입력화면
-<<<<<<< HEAD
-public class TeamBoardInsert extends JFrame {
-=======
+
 public class TeamBoardInsert extends JFrame implements ActionListener, ItemListener, MouseListener {
->>>>>>> branch 'master' of https://github.com/leebonghun/team.git
+
 
 	private JPanel contentPane;
 	private JTextField textTitle;
