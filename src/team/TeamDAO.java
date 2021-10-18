@@ -117,12 +117,12 @@ public class TeamDAO {
 		return boardList;
 	}//select 2
 	
-	public Vector<BoardDTO> select3() {
+	public BoardDTO select3() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		Vector<BoardDTO> boardList = new Vector<BoardDTO>();
-
+		BoardDTO boarddto = new BoardDTO();
 		try {
 
 			con = getConnection();
@@ -131,11 +131,11 @@ public class TeamDAO {
 
 			pstmt = con.prepareStatement(sql);
 			rs = pstmt.executeQuery();
+			
+					
 			while (rs.next()) {
-				BoardDTO boarddto = new BoardDTO();
 				boarddto.setBoardTitle(rs.getString("BoardTitle"));
 				boarddto.setBoardSub(rs.getString("BoardSub"));
-				boarddto.setUserNm(rs.getInt("UserNm"));
 				boardList.add(boarddto);
 			}
 
@@ -150,7 +150,7 @@ public class TeamDAO {
 				e2.printStackTrace();
 			}
 		}
-		return boardList;
+		return boarddto;
 	}//select 3
 	
 //	public boolean update1(String boareTitle, String boardSub) {
