@@ -5,8 +5,10 @@ import java.awt.Button;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -21,27 +23,38 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 
     private JPanel contentPane;
     private JTextField textField;
+    private JTextField textField_1;
+    private JTextArea textArea;
+    private TeamDAO dao;
+    private int no;
 
     /**
      * Launch the application.
      */
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    TeamBoardMain frame = new TeamBoardMain();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+//    public static void main(String[] args) {
+//        EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                try {
+//                    TeamBoardMain frame = new TeamBoardMain();
+//                    frame.setVisible(true);
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
+//    }
 
     /**
      * Create the frame.
      */
-    public TeamBoardMain() {	
+    public TeamBoardMain(int no) {
+    	
+    	this.no = no;
+    	
+    	
+    	
+    	
+    	
         setTitle("게시글 조회");
         setFont(new Font("Dialog", Font.BOLD, 20));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,8 +93,9 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         JLabel lblNewLabel_3 = new JLabel("작성자");
         panel_5.add(lblNewLabel_3);
         
-        JLabel lblNewLabel_4 = new JLabel("");
-        panel_5.add(lblNewLabel_4);
+        textField_1 = new JTextField();
+        panel_5.add(textField_1);
+        textField_1.setColumns(10);
         
         JPanel panel_4 = new JPanel();
         panel.add(panel_4);
@@ -94,32 +108,32 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         contentPane.add(panel_1, BorderLayout.CENTER);
         panel_1.setLayout(new GridLayout(0, 1, 0, 0));
         
-        JTextArea textArea = new JTextArea();
+        textArea = new JTextArea();
         panel_1.add(textArea);
         JPanel panel_2 = new JPanel();
         contentPane.add(panel_2, BorderLayout.SOUTH);
         
         JButton btnNewButton = new JButton("목록");
-
-        btnNewButton.addActionListener(new ActionListener() {
-            
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                new TeamLogin();
-                setVisible(true);
-            }
-        });
         panel_2.add(btnNewButton);
+        getRow(no);
         setVisible(true);
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //제목
-        
-        
-        //내용
+        BoardDTO dto = new BoardDTO();
+        dto.setBoardTitle(textField.getText());
+        dto.setBoardSub(textArea.getText());
+        }
+    
+    private void getRow(int no) {
+    	TeamDAO dao = new TeamDAO();
+    	BoardDTO dto =dao.select3(no);
+    	
+    	textField.setText(dto.getBoardTitle());
+    	textArea.setText(dto.getBoardSub());
+    	
+    }
         
     }
-
-}

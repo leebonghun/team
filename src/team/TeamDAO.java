@@ -116,6 +116,78 @@ public class TeamDAO {
 		}
 		return boardList;
 	}//select 2
+	
+	public BoardDTO select3(int no) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Vector<BoardDTO> boardList = new Vector<BoardDTO>();
+		BoardDTO boarddto = new BoardDTO();
+		try {
+
+			con = getConnection();
+
+			String sql = "select * from BoardTable where boardNm = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			
+					
+			while (rs.next()) {
+				boarddto.setBoardTitle(rs.getString("BoardTitle"));
+				boarddto.setUserNm(rs.getInt("userNm"));
+				boarddto.setBoardSub(rs.getString("BoardSub"));
+				
+				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+				con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return boarddto;
+	}//select 3
+	
+//	public boolean update1(String boareTitle, String boardSub) {
+//		Connection con = null;
+//		PreparedStatement pstmt = null;
+//		boolean flag = false;
+//		
+//		try {
+//			String sql = "update BoardTable set boareTitle=?, boardSub=?";
+//			con=getConnection();
+//			pstmt = con.prepareStatement(sql);
+//			pstmt.setString(1, boareTitle);
+//			pstmt.setString(2, boardSub);
+//				
+//			int result = pstmt.executeUpdate();
+//			if(result > 0) {
+//				flag = true;
+//			}
+//			
+//			
+//		} catch (Exception e) {
+//			e.printStackTrace();// TODO: handle exception
+//		} finally {
+//			try {
+//				pstmt.close();
+//				con.close();
+//			} catch (Exception e2) {
+//				e2.printStackTrace();// TODO: handle exception
+//			}
+//		}
+//		return flag;
+//	}//update1
+	
+	
 	//로그인함수
 	public int loginUser(String userId,String password) {
 		Connection con = null;

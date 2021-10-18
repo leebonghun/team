@@ -1,4 +1,3 @@
-
 package team;
 
 import java.awt.BorderLayout;
@@ -113,13 +112,50 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 		table_1 = new JTable();
 		table_1.setForeground(Color.PINK);
 		String list1[]= {"번호","제목","작성자","작성일자","조회수"};
-		  model = new DefaultTableModel(list1, 0) {
+		model = new DefaultTableModel(list1, 0) {
 			// 셀의 내용을 수정할 수 없게 처리			
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				return false;
 			};
 		};
+		table_1.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				Integer no=(Integer)table_1.getModel().getValueAt(table_1.getSelectedRow(), 0);
+				
+				
+				new TeamBoardMain(no);
+				setVisible(true);
+			}
+		});
+		
 		
 		
 		JPanel panel_1 = new JPanel();
@@ -247,5 +283,3 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 
 	
 }
-
-
