@@ -117,7 +117,7 @@ public class TeamDAO {
 		return boardList;
 	}//select 2
 	
-	public BoardDTO select3() {
+	public BoardDTO select3(int no) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -127,9 +127,10 @@ public class TeamDAO {
 
 			con = getConnection();
 
-			String sql = "select * from BoardTable where userNm = ?";
-
+			String sql = "select * from BoardTable where boardNm = ?";
+			
 			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
 			
 					
@@ -138,7 +139,7 @@ public class TeamDAO {
 				boarddto.setUserNm(rs.getInt("userNm"));
 				boarddto.setBoardSub(rs.getString("BoardSub"));
 				
-				boardList.add(boarddto);
+				
 			}
 
 		} catch (Exception e) {

@@ -83,10 +83,10 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 		contentPane.add(panel, BorderLayout.WEST);
 		
 		// 왼쪽 목록 부분
-		String[] sub = { "공지사항", "모든 게시글", "가입인사" };
+		/*String[] sub = { "공지사항", "모든 게시글", "가입인사" };
 
 		JList<String> list = new JList<String>(sub);
-		panel.add(list);
+		panel.add(list);*/
 		
 
 		
@@ -110,6 +110,15 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 		contentPane.add(scrollPane_1, BorderLayout.CENTER);
 		
 		table_1 = new JTable();
+		table_1.setForeground(Color.PINK);
+		String list1[]= {"번호","제목","작성자","작성일자","조회수"};
+		model = new DefaultTableModel(list1, 0) {
+			// 셀의 내용을 수정할 수 없게 처리			
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			};
+		};
 		table_1.addMouseListener(new MouseListener() {
 			
 			@Override
@@ -138,19 +147,15 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				new TeamBoardMain();
+				
+				Integer no=(Integer)table_1.getModel().getValueAt(table_1.getSelectedRow(), 0);
+				
+				
+				new TeamBoardMain(no);
 				setVisible(true);
 			}
 		});
-		table_1.setForeground(Color.PINK);
-		String list1[]= {"번호","제목","작성자","작성일자","조회수"};
-		  model = new DefaultTableModel(list1, 0) {
-			// 셀의 내용을 수정할 수 없게 처리			
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				return false;
-			};
-		};
+		
 		
 		
 		JPanel panel_1 = new JPanel();
@@ -183,7 +188,7 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 		panel_1.add(btnNewButton);
 		//로그아웃 버튼과 누름시 메인화면 이동
 		JButton btnNewButton_1 = new JButton("로그아웃");
-btnNewButton_1.addActionListener(new ActionListener() {
+		btnNewButton_1.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -221,7 +226,6 @@ btnNewButton_1.addActionListener(new ActionListener() {
 				
 				model.addRow(newVec);
 			}	
-
 			}
 
 		}
