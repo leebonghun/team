@@ -110,6 +110,38 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 		contentPane.add(scrollPane_1, BorderLayout.CENTER);
 		
 		table_1 = new JTable();
+		table_1.addMouseListener(new MouseListener() {
+			
+			@Override
+			public void mouseReleased(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mousePressed(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new TeamBoardMain();
+				setVisible(true);
+			}
+		});
 		table_1.setForeground(Color.PINK);
 		String list1[]= {"번호","제목","작성자","작성일자","조회수"};
 		  model = new DefaultTableModel(list1, 0) {
