@@ -214,34 +214,6 @@ public class TeamDAO {
 			}
 			return idflag;
 			}
-		public boolean insertBoard(BoardDTO boardinsert) {
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			boolean insertFlag = false;
-			try {
-				con =getConnection();
-				String sql="insert into userTable(boardtitle,boardSUB)";
-				sql+="values(boardnm_seq.nextval,?,?,?,sysdate,boardcount_seq.nextval)";
-				pstmt=con.prepareStatement(sql);
-				pstmt.setString(1,boardinsert.getBoardTitle());
-				pstmt.setString(2,boardinsert.getBoardSub());							
-				int result=pstmt.executeUpdate();
-				if (result>0) {
-					insertFlag=true;
-					
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				try {
-					pstmt.close();
-					con.close();
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
-			}
-			return insertFlag;
-		}//insertuser
 		
 		
 		
