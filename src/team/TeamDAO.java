@@ -11,6 +11,10 @@ public class TeamDAO {
 	
 	Vector<UserDTO> vetList = new Vector<UserDTO>();
  //adasd
+	
+	
+	
+	
 	static {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -34,7 +38,7 @@ public class TeamDAO {
 	}//
 
 	// userTBL 데이터 모두 가져오기
-	public Vector<UserDTO> select1() {
+	public Vector<UserDTO> select1(String username,String password) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -112,6 +116,38 @@ public class TeamDAO {
 		}
 		return boardList;
 	}//select 2
+	//로그인함수
+	public boolean loginUser(String username,String password) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean loginFlag = false;
+		try {
+			con =getConnection();
+			String sql="select UserPw from userTable where UserID = ?";
+			
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1,username);
+			
+			
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				if(rs.getString("UserPw").equals(password)) {
+					loginFlag =true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				pstmt.close();
+				con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return loginFlag;
+	}//insertuser
 	
 	//신입 회원입력
 		public boolean insertUser(UserDTO userinsert) {
@@ -146,46 +182,69 @@ public class TeamDAO {
 		}//insertuser
 		
 		
-//		  private boolean idCheck(String id) {
-//		        boolean check = true;
-//		        UserDTO member = FindById(id);
-//		        if(member == null)
-//		            check = false;
-//		        return check;
-//		    }
-
-//		private UserDTO FindById(String id) {
-//			for (UserDTO userdto : vetList ) {
-//				if (userdto.getUserID().equals(id)) {
-//					return userdto;
-//				}
-//			}
-//			return null;
-//		}
+		
+		public boolean idCheck(String id ) {
+			Connection con = null;
+	PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean idflag = true;
+				
+			
+			try {
+				con=getConnection();
+			pstmt=con.prepareStatement("Select * from UserTable where Userid = ?");
+			pstmt.setString(1, id);
+				rs=pstmt.executeQuery();
+				if(rs.next()) {
+					if(rs.getString("UserPw").equals(id)) {
+						idflag =true;
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {try {
+				
+				pstmt.close();
+				con.close();
+				
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+				
+			}
+			return idflag;
+			}
+		public boolean insertBoard(BoardDTO boardinsert) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			boolean insertFlag = false;
+			try {
+				con =getConnection();
+				String sql="insert into userTable(boardtitle,boardSUB)";
+				sql+="values(boardnm_seq.nextval,?,?,?,sysdate,boardcount_seq.nextval)";
+				pstmt=con.prepareStatement(sql);
+				pstmt.setString(1,boardinsert.getBoardTitle());
+				pstmt.setString(2,boardinsert.getBoardSub());							
+				int result=pstmt.executeUpdate();
+				if (result>0) {
+					insertFlag=true;
+					
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					pstmt.close();
+					con.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return insertFlag;
+		}//insertuser
 		
 		
-//		public boolean idCheck(String id ) {
-//			Connection con = null;
-//			PreparedStatement pstmt = null;
-//			ResultSet rs = null;
-//			
-//			boolean result=true;
-//			
-//			try {
-//				pstmt=con.prepareStatement("Select * from UserTable where Userid");
-//				pstmt.setString(1, id.trim());
-//				rs=pstmt.executeQuery();
-//				if (rs.next()) {
-//					result=false;
-//				}
-//			} catch (SQLException e) {
-//				
-//			}finally {
-//				
-//			}
-//			return result;
-//		}//idcheck
-	
+		
 		
 	
 }//teamdao
