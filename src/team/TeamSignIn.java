@@ -186,32 +186,8 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 
 			
 			dao.insertUser(newdto);
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/leebonghun/team.git
-
-			
-		}else {
-			
-		
-			
-=======
->>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 		}
-<<<<<<< HEAD
-		
-	}
-<<<<<<< HEAD
-
-
-		} else {
-
-=======
-=======
->>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 		}
 
 
->>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 }
