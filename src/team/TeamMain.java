@@ -98,7 +98,7 @@ implements ActionListener,ItemListener {
         
         JButton login = new JButton("로그인");
         login.addActionListener(this);
-      
+		
         login.setFont(new Font("굴림", Font.PLAIN, 14));
         panel_2.add(login);
         
@@ -122,35 +122,30 @@ implements ActionListener,ItemListener {
         Object obj1 = e.getSource();
         Vector<UserDTO> dao1 = new Vector<UserDTO>();
         String cmd =e.getActionCommand();
-       String username = textField.getText();
-       String password = textField_1.getText();
-       
+    	String username = textField.getText();
+    	String password = textField_1.getText();
+    	
       
         if(cmd.equals("회원가입")) {
-            dispose();
-        	new TeamSignIn();
-            
+            new TeamSignIn();
             
         }else if(cmd.equals("로그인")) {
-
-           if(dao.loginUser(username, password)) {
-           JOptionPane.showMessageDialog(null, "로그인성공");
-           new TeamLogin();
-           }
-           else {
-           JOptionPane.showMessageDialog(null, "로그인실패");
-           
-           }
-
+        	int userNm=dao.loginUser(username, password);
+        	if(userNm!=0){
+        		JOptionPane.showMessageDialog(null, "로그인성공"); 
         	
-
+        	dispose();
+        		new TeamLogin(userNm); 
+        	}
+        	else {
+        	JOptionPane.showMessageDialog(null, "로그인실패");
+        	
+        	}
         }
-           
-              
-         
+        	
+        		
+			
         }
-   
+	
             
        }
-        
- 
