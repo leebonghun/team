@@ -150,19 +150,21 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 				String insertfail = "내용을 입력해주세요.";
 				JOptionPane.showConfirmDialog(null, insertfail, "작성실패", JOptionPane.WARNING_MESSAGE);
 			} else {
-				dispose();
+				
 				
 				BoardDTO dto = new BoardDTO();
 				dto.setBoardTitle(textTitle.getText());
 				dto.setUserNm(userNm);
 				dto.setBoardSub(textsub.getText());
+				
 				if(dao.insertBoard(dto)) {
 					System.out.print("success");
+					
 				}
-//				new TeamLogin();
-
+				new TeamLogin(userNm);
 			}
 			
+//			new TeamLogin();
 		}
 
 	}
