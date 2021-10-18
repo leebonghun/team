@@ -40,22 +40,20 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener {
 	private JPanel contentPane;
 	private JTextField boardNm;
 	private JTextField boardTitle;
-<<<<<<< HEAD
-//디벨로퍼 연걸 변수명
-=======
+
 	private JTextField userNm;
 >>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 	private JTextField boardDate;
 	private JTextField boardCount;
 	private DefaultTableModel model;
-<<<<<<< HEAD
+
 	private BoardDTO dao;
 	private JTable table_1;
 
-=======
+
 	private TeamDAO dao;
 	private JTable table;
->>>>>>> branch 'master' of https://github.com/leebonghun/team.git
+
 
 	/**
 	 * Launch the application.
