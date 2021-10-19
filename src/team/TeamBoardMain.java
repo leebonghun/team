@@ -130,6 +130,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 	                dto.setBoardTitle(textField.getText());
 	                dto.setBoardSub(textArea.getText());
 	                dao.deleteUser(dto);
+	                new TeamLogin(no);
 	                System.out.println("Success"+dao.deleteUser(dto));
 			}
 		});

@@ -312,6 +312,7 @@ public class TeamDAO {
 			}
 			return idflag;
 			}
+
 	
 		public boolean insertBoard(BoardDTO boardinsert) {
             Connection con = null;
@@ -342,5 +343,6 @@ public class TeamDAO {
             }
             return insertFlag;
         }//insertboard
+
 	
 }//teamdao
