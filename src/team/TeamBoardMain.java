@@ -115,6 +115,25 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         
         JButton btnNewButton = new JButton("목록");
         panel_2.add(btnNewButton);
+        
+        JButton btnNewButton_1 = new JButton("삭제");
+        btnNewButton_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TeamDAO dao = new TeamDAO();
+				BoardDTO dto = dao.select3(no);
+						
+				dto.setBoardTitle(textField.getText());
+				dto.setBoardSub(textArea.getText());
+		        dao.deleteUser(dto);
+		        new TeamLogin(no);
+		        System.out.println("Success"+dao.deleteUser(dto));
+		        
+			}
+		});
+
+        panel_2.add(btnNewButton_1);
         getRow(no);
         setVisible(true);
         
