@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -22,6 +23,12 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 import java.awt.FlowLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+
+import javax.swing.ImageIcon;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 
 //회원가입화면 입력값:아이디,비번,이름,이메일 버튼:회원가입 ,뒤로가기
 public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
@@ -54,28 +61,56 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 	 * Create the frame.
 	 */
 	public TeamSignIn() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TeamSignIn.class.getResource("/team/v.jpg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		JPanel panel_6 = new JPanel();
+		panel_6.setBackground(Color.DARK_GRAY);
+		
+		contentPane.add(panel_6);
+		GridBagLayout gbl_panel_6 = new GridBagLayout();
+		gbl_panel_6.columnWidths = new int[]{44, 338, 0};
+		gbl_panel_6.rowHeights = new int[]{178, 0};
+		gbl_panel_6.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_6.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		panel_6.setLayout(gbl_panel_6);
+		
+		
+		
+		
+		JLabel lblNewLabel_5 = new JLabel("New label");
+		
+		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
+		gbc_lblNewLabel_5.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblNewLabel_5.gridx = 1;
+		gbc_lblNewLabel_5.gridy = 0;
+		panel_6.add(lblNewLabel_5, gbc_lblNewLabel_5);
+		
 
 		JPanel panel_4 = new JPanel();
+		panel_4.setBackground(Color.DARK_GRAY);
 		FlowLayout flowLayout = (FlowLayout) panel_4.getLayout();
 		contentPane.add(panel_4);
 
 		JLabel lblNewLabel_4 = new JLabel("회원가입");
 		lblNewLabel_4.setFont(new Font("굴림", Font.PLAIN, 20));
+		lblNewLabel_4.setForeground(Color.white);
 		panel_4.add(lblNewLabel_4);
 
 		JPanel panel_3 = new JPanel();
+		panel_3.setBackground(Color.DARK_GRAY);
 		FlowLayout flowLayout_1 = (FlowLayout) panel_3.getLayout();
 		flowLayout_1.setAlignment(FlowLayout.LEFT);
 		contentPane.add(panel_3);
 
 		JLabel lblNewLabel_1 = new JLabel("아이디");
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setForeground(Color.white);
 		panel_3.add(lblNewLabel_1);
 
 		txtId = new JTextField();
@@ -101,12 +136,14 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 		panel_3.add(btnNewButton_2);
 
 		JPanel panel_2 = new JPanel();
+		panel_2.setBackground(Color.DARK_GRAY);
 		FlowLayout flowLayout_2 = (FlowLayout) panel_2.getLayout();
 		flowLayout_2.setAlignment(FlowLayout.LEFT);
 		contentPane.add(panel_2);
 
 		JLabel lblNewLabel_2 = new JLabel("비밀번호");
 		panel_2.add(lblNewLabel_2);
+		lblNewLabel_2.setForeground(Color.white);
 
 		txtPwd = new JTextField();
 		panel_2.add(txtPwd);
@@ -114,32 +151,35 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 		txtPwd.setColumns(10);
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.DARK_GRAY);
 		FlowLayout flowLayout_3 = (FlowLayout) panel_1.getLayout();
 		flowLayout_3.setAlignment(FlowLayout.LEFT);
 		contentPane.add(panel_1);
 
 		JLabel lblNewLabel_3 = new JLabel("이름");
 		panel_1.add(lblNewLabel_3);
-
+		lblNewLabel_3.setForeground(Color.white);
 		txtName = new JTextField();
 		panel_1.add(txtName);
 		txtName.addActionListener(this);
 		txtName.setColumns(10);
 
 		JPanel panel = new JPanel();
+		panel.setBackground(Color.DARK_GRAY);
 		FlowLayout flowLayout_4 = (FlowLayout) panel.getLayout();
 		flowLayout_4.setAlignment(FlowLayout.LEFT);
 		contentPane.add(panel);
 
 		JLabel lblNewLabel = new JLabel("이메일");
 		panel.add(lblNewLabel);
-
+		lblNewLabel.setForeground(Color.white);
 		txtEmail = new JTextField();
 		panel.add(txtEmail);
 		txtEmail.addActionListener(this);
 		txtEmail.setColumns(10);
 
 		JPanel panel_5 = new JPanel();
+		panel_5.setBackground(Color.DARK_GRAY);
 		contentPane.add(panel_5);
 
 		btnNewButton = new JButton("회원가입");

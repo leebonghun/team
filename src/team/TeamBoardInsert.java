@@ -183,7 +183,6 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
