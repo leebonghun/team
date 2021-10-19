@@ -1,3 +1,4 @@
+
 package team;
 
 import java.awt.BorderLayout;
@@ -58,6 +59,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
     	
         setTitle("게시글 조회");
         setFont(new Font("Dialog", Font.BOLD, 20));
+
         setBounds(1100, 30, 450, 370);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
@@ -115,12 +117,34 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         
         JButton btnNewButton = new JButton("목록");
         panel_2.add(btnNewButton);
+
+        
+        JButton btnNewButton_1 = new JButton("삭제");
+        btnNewButton_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TeamDAO dao = new TeamDAO();
+				BoardDTO dto = dao.select3(no);
+						
+				dto.setBoardTitle(textField.getText());
+				dto.setBoardSub(textArea.getText());
+		        dao.deleteUser(dto);
+		        new TeamLogin(no);
+		        System.out.println("Success"+dao.deleteUser(dto));
+		        
+			}
+		});
+
+        panel_2.add(btnNewButton_1);
+        btnNewButton.addActionListener(this);
+
         getRow(no);
         setVisible(true);
         
-        JButton btnNewButton_1 = new JButton("삭제");
-        panel_2.add(btnNewButton_1);
-        btnNewButton_1.addActionListener(new ActionListener() {
+        JButton btnNewButton_11 = new JButton("삭제");
+        panel_2.add(btnNewButton_11);
+        btnNewButton_11.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -151,3 +175,4 @@ public class TeamBoardMain extends JFrame implements ActionListener {
     }
         
     }
+

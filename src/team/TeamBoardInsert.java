@@ -35,7 +35,9 @@ import java.awt.Color;
 import java.awt.Toolkit;
 
 //게시글 입력화면
+
 public class TeamBoardInsert extends JFrame implements ActionListener, ItemListener, MouseListener {
+
 
 	private JPanel contentPane;
 	private JTextField textTitle;
