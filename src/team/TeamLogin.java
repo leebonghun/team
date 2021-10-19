@@ -98,9 +98,9 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 		 * JList<String> list = new JList<String>(sub); panel.add(list);
 		 */
 
-//		  String[] sub = { "공지사항", "모든 게시글", "가입인사" };
-//		  
-//		  JList<String> list = new JList<String>(sub); panel.add(list);
+
+		 
+
 
 		// 중앙 스크롤 패인 (게시물 작성후 등록되서 보이는 목록들)
 		JScrollPane scrollPane = new JScrollPane();
@@ -120,6 +120,9 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon(TeamLogin.class.getResource("/team/4444.jpg")));
 		panel_2.add(lblNewLabel_1);
+
+
+
 
 		// "번호","제목","작성자","작성일자","조회수" 테이블 모델 패인
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -173,16 +176,19 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 		});
 
 		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.BLACK);
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 
 		// 맨밑 게시판목록 알림과 글쓰기 ,로그아웃 버튼
 		JLabel lblNewLabel = new JLabel("익명게시판 목록");
+		lblNewLabel.setForeground(Color.WHITE);
 		panel_1.add(lblNewLabel);
 
 		this.userNm = userNm;
 
 		// 글쓰기 버튼과 누를시 게시물 작성으로 이동
 		JButton btnNewButton = new JButton("글쓰기");
+		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.addActionListener(new ActionListener() {
 
 			@Override
@@ -198,6 +204,7 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 		panel_1.add(btnNewButton);
 		// 로그아웃 버튼과 누름시 메인화면 이동
 		JButton btnNewButton_1 = new JButton("로그아웃");
+		btnNewButton_1.setBackground(Color.WHITE);
 		btnNewButton_1.addActionListener(new ActionListener() {
 
 			@Override
