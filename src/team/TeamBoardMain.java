@@ -57,7 +57,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
     	
         setTitle("게시글 조회");
         setFont(new Font("Dialog", Font.BOLD, 20));
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         setBounds(1100, 30, 450, 370);
         contentPane = new JPanel();
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
