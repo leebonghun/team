@@ -26,7 +26,7 @@ import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.Toolkit;
 
-//첫화면  입력값 : 아이디 ,비밀번호  버튼 :로그인,회원가입  
+//첫화면  입력값 : 아이디 ,비밀번호  버튼 :로그인,회원가입  ㅇ
 public class TeamMain extends JFrame
 implements ActionListener,ItemListener {
 
