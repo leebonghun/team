@@ -27,7 +27,10 @@ import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JTabbedPane;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Color;
+import javax.swing.ImageIcon;
+import java.awt.Toolkit;
 // 게시판 출력화면 
 
 //만들어야될것 
@@ -72,6 +75,8 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 //	
 	// 기본 전체 화면 패널
 	public TeamLogin(int userNm) {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TeamLogin.class.getResource("/team/화면 캡처 2021-10-19 155329.jpg")));
+		setTitle("게시판 메인");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 30, 1000, 1000);
 
@@ -85,31 +90,46 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 		contentPane.add(panel, BorderLayout.WEST);
 
 		// 왼쪽 목록 부분
+<<<<<<< HEAD
 		/*
 		 * String[] sub = { "공지사항", "모든 게시글", "가입인사" };
 		 * 
 		 * JList<String> list = new JList<String>(sub); panel.add(list);
 		 */
+=======
+		
+//		  String[] sub = { "공지사항", "모든 게시글", "가입인사" };
+//		  
+//		  JList<String> list = new JList<String>(sub); panel.add(list);
+		 
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 
 		// 중앙 스크롤 패인 (게시물 작성후 등록되서 보이는 목록들)
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane);
 
 		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.DARK_GRAY);
+		panel_2.setBackground(Color.BLACK);
 		contentPane.add(panel_2, BorderLayout.NORTH);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		// 위쪽 타이틀
+<<<<<<< HEAD
 		JLabel lblNewLabel_2 = new JLabel("익명 게시판 ");
 		lblNewLabel_2.setForeground(Color.WHITE);
 		panel_2.add(lblNewLabel_2);
+=======
+		JLabel lblNewLabel_1 = new JLabel("New label");
+		lblNewLabel_1.setIcon(new ImageIcon(TeamLogin.class.getResource("/team/4444.jpg")));
+		panel_2.add(lblNewLabel_1);
+>>>>>>> branch 'master' of https://github.com/leebonghun/team.git
 
 		// "번호","제목","작성자","작성일자","조회수" 테이블 모델 패인
 		JScrollPane scrollPane_1 = new JScrollPane();
 		contentPane.add(scrollPane_1, BorderLayout.CENTER);
 
 		table_1 = new JTable();
+		table_1.setBackground(Color.BLACK);
 		table_1.setForeground(Color.PINK);
 		String list1[] = { "번호", "제목", "작성자", "작성일자", "조회수" };
 		model = new DefaultTableModel(list1, 0) {
