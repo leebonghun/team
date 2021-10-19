@@ -118,6 +118,8 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         getRow(no);
         setVisible(true);
         
+        JButton btnNewButton_1 = new JButton("삭제");
+        
     }
 
     @Override
