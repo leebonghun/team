@@ -114,13 +114,7 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 		contentPane.add(panel_2, BorderLayout.NORTH);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		// 위쪽 타이틀
-
-		JLabel lblNewLabel_2 = new JLabel("익명 게시판 ");
-		lblNewLabel_2.setForeground(Color.WHITE);
-		panel_2.add(lblNewLabel_2);
-
-		JLabel lblNewLabel_1 = new JLabel("New label");
+		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(TeamLogin.class.getResource("/team/4444.jpg")));
 		panel_2.add(lblNewLabel_1);
 
