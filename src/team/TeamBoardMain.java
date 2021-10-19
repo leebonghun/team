@@ -115,6 +115,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         
         JButton btnNewButton = new JButton("목록");
         panel_2.add(btnNewButton);
+        btnNewButton.addActionListener(this);
         getRow(no);
         setVisible(true);
         
@@ -125,7 +126,13 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         BoardDTO dto = new BoardDTO();
         dto.setBoardTitle(textField.getText());
         dto.setBoardSub(textArea.getText());
-        }
+       
+    
+    
+    }//actionperformed
+    
+    
+    
     
     private void getRow(int no) {
     	TeamDAO dao = new TeamDAO();

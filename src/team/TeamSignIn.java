@@ -93,6 +93,8 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 				if (dao.idCheck(id)) {
 					JOptionPane.showMessageDialog(null, "중복된 아이디");
 				}
+					
+				
 			}
 		});
 
