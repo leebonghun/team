@@ -70,7 +70,7 @@ public class TeamLogin extends JFrame implements ActionListener,ItemListener,Mou
 //	
 	//기본 전체 화면 패널 
 	public TeamLogin(int userNm) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 1000, 1000);
 
 		contentPane = new JPanel();
