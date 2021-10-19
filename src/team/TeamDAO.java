@@ -1,6 +1,7 @@
 package team;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -250,7 +251,34 @@ public class TeamDAO {
 			}
 			return insertFlag;
 		}//insertuser
-		
+		public boolean deleteUser(BoardDTO userdelete) {
+            Connection con = null;
+            PreparedStatement pstmt = null;
+            boolean deleteFlag = false;
+
+            try {
+                con = getConnection();
+                String sql = "delete BoardTable where boardNm =?";
+                pstmt = con.prepareStatement(sql);
+                pstmt.setInt(1, userdelete.getBoardNm());
+
+                int result = pstmt.executeUpdate();
+                if (result > 0) {
+                    deleteFlag = true;
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                try {
+                    pstmt.close();
+                    con.close();
+                } catch (Exception e2) {
+                    e2.printStackTrace();
+                }
+            }
+            return deleteFlag;
+        }
 		
 		
 		public boolean idCheck(String id ) {

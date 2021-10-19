@@ -13,6 +13,7 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -118,7 +119,20 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         setVisible(true);
         
         JButton btnNewButton_1 = new JButton("삭제");
-        
+        panel_2.add(btnNewButton_1);
+        btnNewButton_1.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				    TeamDAO dao = new TeamDAO();
+	                BoardDTO dto = dao.select3(no);
+
+	                dto.setBoardTitle(textField.getText());
+	                dto.setBoardSub(textArea.getText());
+	                dao.deleteUser(dto);
+	                System.out.println("Success"+dao.deleteUser(dto));
+			}
+		});
     }
 
     @Override
