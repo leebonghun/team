@@ -59,7 +59,7 @@ implements ActionListener,ItemListener {
     public TeamMain() {
     	setIconImage(Toolkit.getDefaultToolkit().getImage(TeamMain.class.getResource("/team/화면 캡처 2021-10-19 155329.jpg")));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(100, 100, 450, 300);
+        setBounds(100, 100, 450, 370);
         contentPane = new JPanel();
         contentPane.setBackground(Color.DARK_GRAY);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

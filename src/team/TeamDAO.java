@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Vector;
 
 public class TeamDAO {
@@ -317,4 +318,37 @@ public class TeamDAO {
         }//insertboard
 
 	
+		
+		// 게시글 삭제
+		public boolean deleteUser(BoardDTO userdelete) {
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			boolean deleteFlag = false;
+
+			try {
+				con = getConnection();
+				String sql = "delete BoardTable where boardTitle =?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, userdelete.getBoardTitle());          
+                
+				int result = pstmt.executeUpdate();
+				if (result > 0) {
+					deleteFlag = true;
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					pstmt.close();
+					con.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return deleteFlag;
+		}//deleteuserid
+
+		
+		
 }//teamdao

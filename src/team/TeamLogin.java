@@ -75,11 +75,14 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 //	
 	// 기본 전체 화면 패널
 	public TeamLogin(int userNm) {
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1000, 1000);
 		setIconImage(
 				Toolkit.getDefaultToolkit().getImage(TeamLogin.class.getResource("/team/화면 캡처 2021-10-19 155329.jpg")));
 		setTitle("게시판 메인");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 30, 1000, 1000);
+
 
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
