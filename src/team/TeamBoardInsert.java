@@ -135,7 +135,7 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
 
 		textsub = new JTextArea();
-		textsub.setForeground(Color.WHITE);
+		textsub.setForeground(Color.black);
 		panel_1.add(textsub);
 		textsub.addMouseListener(this);
 
