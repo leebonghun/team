@@ -127,7 +127,7 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 				// TODO Auto-generated method stub
 				String id = txtId.getText();
 				if (dao.idCheck(id)) {
-					JOptionPane.showMessageDialog(null, "중복된 아이디");
+					JOptionPane.showMessageDialog(getParent(), "중복된 아이디");
 				}
 					
 				
