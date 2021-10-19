@@ -23,6 +23,8 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import javax.swing.SwingConstants;
+import java.awt.Color;
+import java.awt.Toolkit;
 
 //첫화면  입력값 : 아이디 ,비밀번호  버튼 :로그인,회원가입  
 public class TeamMain extends JFrame
@@ -55,37 +57,48 @@ implements ActionListener,ItemListener {
      * Create the frame.
      */
     public TeamMain() {
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(TeamMain.class.getResource("/team/화면 캡처 2021-10-19 155329.jpg")));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 300);
         contentPane = new JPanel();
+        contentPane.setBackground(Color.DARK_GRAY);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         setContentPane(contentPane);
         contentPane.setLayout(new GridLayout(0, 1, 0, 0));
         
         JPanel panel = new JPanel();
+        panel.setBackground(Color.DARK_GRAY);
         contentPane.add(panel);
         
         JLabel lblNewLabel = new JLabel("Anonynous");
+        lblNewLabel.setForeground(Color.white);
+        lblNewLabel.setBackground(Color.DARK_GRAY);
         lblNewLabel.setFont(new Font("굴림", Font.PLAIN, 26));
         panel.add(lblNewLabel);
         
         JPanel panel_3 = new JPanel();
+        panel_3.setBackground(Color.DARK_GRAY);
         contentPane.add(panel_3);
         
         JLabel lblNewLabel_1 = new JLabel("아이디");
+        lblNewLabel_1.setBackground(Color.DARK_GRAY);
+        lblNewLabel_1.setForeground(Color.white);
         lblNewLabel_1.setFont(new Font("굴림", Font.PLAIN, 14));
         panel_3.add(lblNewLabel_1);
         
         textField = new JTextField();
+
         textField.addActionListener(this);
         panel_3.add(textField);
         textField.setColumns(10);
         
         JPanel panel_1 = new JPanel();
+        panel_1.setBackground(Color.DARK_GRAY);
         contentPane.add(panel_1);
         
         JLabel lblNewLabel_2 = new JLabel("비밀번호");
         lblNewLabel_2.setFont(new Font("굴림", Font.PLAIN, 14));
+        lblNewLabel_2.setForeground(Color.white);
         panel_1.add(lblNewLabel_2);
         
         textField_1 = new JTextField();
@@ -94,15 +107,19 @@ implements ActionListener,ItemListener {
         textField_1.setColumns(10);
         
         JPanel panel_2 = new JPanel();
+        panel_2.setBackground(Color.DARK_GRAY);
         contentPane.add(panel_2);
         
         JButton login = new JButton("로그인");
+        login.setForeground(Color.BLACK);
+        login.setBackground(Color.WHITE);
         login.addActionListener(this);
 		
         login.setFont(new Font("굴림", Font.PLAIN, 14));
         panel_2.add(login);
         
         JButton signin = new JButton("회원가입");
+        signin.setBackground(Color.WHITE);
         signin.addActionListener(this);
         signin.setFont(new Font("굴림", Font.PLAIN, 14));
         panel_2.add(signin);

@@ -119,6 +119,7 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 		txtId.setColumns(10);
 
 		btnNewButton_2 = new JButton("중복체크");
+		btnNewButton_2.setBackground(Color.WHITE);
 		btnNewButton_2.addActionListener(new ActionListener() {
 
 			@Override
@@ -183,10 +184,12 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 		contentPane.add(panel_5);
 
 		btnNewButton = new JButton("회원가입");
+		btnNewButton.setBackground(Color.WHITE);
 		btnNewButton.addActionListener(this);
 		panel_5.add(btnNewButton);
 
 		btnNewButton_1 = new JButton("뒤로가기");
+		btnNewButton_1.setBackground(Color.WHITE);
 		btnNewButton_1.addActionListener(this);
 		panel_5.add(btnNewButton_1);
 
