@@ -53,7 +53,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
     public TeamBoardMain(int no) {
     	setForeground(Color.WHITE);
     	setBackground(Color.BLACK);
-    	setIconImage(Toolkit.getDefaultToolkit().getImage(TeamBoardMain.class.getResource("/team/v.jpg")));
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(TeamBoardMain.class.getResource("/team/화면 캡처 2021-10-19 155329.jpg")));
     	
     	this.no = no;
     	
