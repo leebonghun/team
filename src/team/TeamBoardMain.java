@@ -60,7 +60,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 450, 370);
         contentPane = new JPanel();
-        contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+        contentPane.setBorder(new EmptyBorder(5, 5, 5,5));
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
         
@@ -122,9 +122,6 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        BoardDTO dto = new BoardDTO();
-        dto.setBoardTitle(textField.getText());
-        dto.setBoardSub(textArea.getText());
         }
     
     private void getRow(int no) {
@@ -132,6 +129,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
     	BoardDTO dto =dao.select3(no);
     	
     	textField.setText(dto.getBoardTitle());
+    	textField_1.setText(Integer.toString(dto.getUserNm()));
     	textArea.setText(dto.getBoardSub());
     	
     }
