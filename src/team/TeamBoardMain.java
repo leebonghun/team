@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 package team;
 
 import java.awt.BorderLayout;
@@ -186,4 +185,4 @@ public class TeamBoardMain extends JFrame implements ActionListener {
     }
         
     }
->>>>>>> branch 'master' of https://github.com/leebonghun/team.git
+
