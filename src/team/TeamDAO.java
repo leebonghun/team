@@ -285,6 +285,7 @@ public class TeamDAO {
 			}
 			return idflag;
 			}
+
 	
 		public boolean insertBoard(BoardDTO boardinsert) {
             Connection con = null;
@@ -315,6 +316,7 @@ public class TeamDAO {
             }
             return insertFlag;
         }//insertboard
+
 	
 		
 		// 게시글 삭제

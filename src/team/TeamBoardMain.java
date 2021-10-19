@@ -18,6 +18,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+import java.awt.Toolkit;
+import java.awt.Color;
 //게시글 조회
 public class TeamBoardMain extends JFrame implements ActionListener {
 
@@ -48,6 +50,9 @@ public class TeamBoardMain extends JFrame implements ActionListener {
      * Create the frame.
      */
     public TeamBoardMain(int no) {
+    	setForeground(Color.WHITE);
+    	setBackground(Color.BLACK);
+    	setIconImage(Toolkit.getDefaultToolkit().getImage(TeamBoardMain.class.getResource("/team/v.jpg")));
     	
     	this.no = no;
     	
@@ -60,48 +65,61 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 
         setBounds(1100, 30, 450, 370);
         contentPane = new JPanel();
+        contentPane.setBackground(Color.BLACK);
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
         contentPane.setLayout(new BorderLayout(0, 0));
         setContentPane(contentPane);
         
         JPanel panel = new JPanel();
+        panel.setBackground(Color.BLACK);
         contentPane.add(panel, BorderLayout.NORTH);
         panel.setLayout(new GridLayout(0, 1, 0, 0));
         
         JLabel lblNewLabel = new JLabel("게시글 조회");
+        lblNewLabel.setForeground(Color.WHITE);
         lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel.setFont(new Font("굴림", Font.BOLD, 20));
         panel.add(lblNewLabel);
         
         JPanel panel_3 = new JPanel();
+        panel_3.setBackground(Color.BLACK);
         panel.add(panel_3);
         panel_3.setLayout(new GridLayout(0, 2, 0, 0));
         
         JLabel lblNewLabel_1 = new JLabel("글 제목");
+        lblNewLabel_1.setForeground(Color.WHITE);
+        lblNewLabel_1.setBackground(Color.BLACK);
         panel_3.add(lblNewLabel_1);
         
         textField = new JTextField();
+        textField.setForeground(Color.BLACK);
         panel_3.add(textField);
         textField.addActionListener(this);
         textField.setColumns(10);
         
         
         JPanel panel_5 = new JPanel();
+        panel_5.setForeground(Color.BLACK);
+        panel_5.setBackground(Color.BLACK);
         panel.add(panel_5);
         panel_5.setLayout(new GridLayout(0, 2, 0, 0));
         
         JLabel lblNewLabel_3 = new JLabel("작성자");
+        lblNewLabel_3.setForeground(Color.WHITE);
         panel_5.add(lblNewLabel_3);
         
         textField_1 = new JTextField();
+        textField_1.setBackground(Color.WHITE);
         panel_5.add(textField_1);
         textField_1.setColumns(10);
         
         JPanel panel_4 = new JPanel();
+        panel_4.setBackground(Color.BLACK);
         panel.add(panel_4);
         panel_4.setLayout(new GridLayout(1, 0, 0, 0));
         
         JLabel lblNewLabel_2 = new JLabel("내용");
+        lblNewLabel_2.setForeground(Color.WHITE);
         panel_4.add(lblNewLabel_2);
         
         JPanel panel_1 = new JPanel();
@@ -109,11 +127,14 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         panel_1.setLayout(new GridLayout(0, 1, 0, 0));
         
         textArea = new JTextArea();
+        textArea.setBackground(Color.WHITE);
         panel_1.add(textArea);
         JPanel panel_2 = new JPanel();
+        panel_2.setBackground(Color.BLACK);
         contentPane.add(panel_2, BorderLayout.SOUTH);
         
         JButton btnNewButton = new JButton("목록");
+        btnNewButton.setBackground(Color.WHITE);
         panel_2.add(btnNewButton);
         
         JButton btnNewButton_1 = new JButton("삭제");
@@ -134,6 +155,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 		});
 
         panel_2.add(btnNewButton_1);
+        btnNewButton.addActionListener(this);
         getRow(no);
         setVisible(true);
         
@@ -144,7 +166,13 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         BoardDTO dto = new BoardDTO();
         dto.setBoardTitle(textField.getText());
         dto.setBoardSub(textArea.getText());
-        }
+       
+    
+    
+    }//actionperformed
+    
+    
+    
     
     private void getRow(int no) {
     	TeamDAO dao = new TeamDAO();
