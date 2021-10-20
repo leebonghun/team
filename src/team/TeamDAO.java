@@ -119,7 +119,7 @@ public class TeamDAO {
 		return boardList;
 	}//select 2
 	
-	public BoardDTO select3(int no) {
+	public BoardDTO select3(int no,int userNm) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
