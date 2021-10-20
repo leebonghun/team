@@ -158,36 +158,72 @@ public class TeamDAO {
 		return boarddto;
 	}//select 3
 	
-//	public boolean update1(String boareTitle, String boardSub) {
-//		Connection con = null;
-//		PreparedStatement pstmt = null;
-//		boolean flag = false;
-//		
-//		try {
-//			String sql = "update BoardTable set boareTitle=?, boardSub=?";
-//			con=getConnection();
-//			pstmt = con.prepareStatement(sql);
-//			pstmt.setString(1, boareTitle);
-//			pstmt.setString(2, boardSub);
-//				
-//			int result = pstmt.executeUpdate();
-//			if(result > 0) {
-//				flag = true;
-//			}
-//			 
-//			
-//		} catch (Exception e) {
-//			e.printStackTrace();// TODO: handle exception
-//		} finally {
-//			try {
-//				pstmt.close();
-//				con.close();
-//			} catch (Exception e2) {
-//				e2.printStackTrace();// TODO: handle exception
-//			}
-//		}
-//		return flag;
-//	}//update1
+	public boolean update1(BoardDTO updateuser) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		boolean flag = false;
+		
+		try {
+			String sql = "update BoardTable set boardTitle=? , boardSub=? where boardNm=?";
+			con=getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(3, updateuser.getBoardNm());
+			pstmt.setString(1, updateuser.getBoardTitle());
+			pstmt.setString(2, updateuser.getBoardSub());
+		
+				
+			int result = pstmt.executeUpdate();
+			if(result > 0) {
+				flag = true;
+			}
+			 
+			
+		} catch (Exception e) {
+			e.printStackTrace();// TODO: handle exception
+		} finally {
+			try {
+				pstmt.close();
+				con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();// TODO: handle exception
+			}
+		}
+		return flag;
+	}//update1
+	public boolean update2(int no) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		boolean flag = false;
+		
+		try {
+			String sql = "update BoardTable set boardCount=boardCount+1 where boardNm=?";
+			con=getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			
+			
+		
+				
+			int result = pstmt.executeUpdate();
+			if(result > 0) {
+				flag = true;
+
+			}
+			 
+			
+		} catch (Exception e) {
+			e.printStackTrace();// TODO: handle exception
+		} finally {
+			try {
+				pstmt.close();
+				con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();// TODO: handle exception
+			}
+		}
+		return flag;
+	}//update1
+	
 	
 	
 	//로그인함수
@@ -264,12 +300,13 @@ public class TeamDAO {
 			
 			try {
 				con=getConnection();
-			pstmt=con.prepareStatement("Select * from UserTable where Userid = ?");
+			pstmt=con.prepareStatement("Select count(*) cnt from UserTable where Userid = ?");
 			pstmt.setString(1, id);
 				rs=pstmt.executeQuery();
 				if(rs.next()) {
-					if(rs.getString("UserPw").equals(id)) {
-						idflag =true;
+					int cnt = rs.getInt("cnt");
+					if(cnt>0) {
+						return true;
 					}
 				}
 			} catch (SQLException e) {
@@ -284,7 +321,7 @@ public class TeamDAO {
 			}
 				
 			}
-			return idflag;
+			return false;
 			}
 
 	

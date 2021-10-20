@@ -164,9 +164,11 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-
+				
 				Integer no = (Integer) table_1.getModel().getValueAt(table_1.getSelectedRow(), 0);
-
+				
+				
+				
 				new TeamBoardMain(no);
 				setVisible(true);
 			}

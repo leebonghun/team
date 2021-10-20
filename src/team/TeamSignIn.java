@@ -39,6 +39,7 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 	private JTextField txtPwd;
 	private JTextField txtName;
 	private JButton btnNewButton, btnNewButton_1, btnNewButton_2;
+	private String id;
 	TeamDAO dao = new TeamDAO();
 
 	/**
@@ -62,35 +63,31 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 	 */
 	public TeamSignIn() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TeamSignIn.class.getResource("/team/v.jpg")));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
-		
+
 		JPanel panel_6 = new JPanel();
 		panel_6.setBackground(Color.DARK_GRAY);
-		
+
 		contentPane.add(panel_6);
 		GridBagLayout gbl_panel_6 = new GridBagLayout();
-		gbl_panel_6.columnWidths = new int[]{44, 338, 0};
-		gbl_panel_6.rowHeights = new int[]{178, 0};
-		gbl_panel_6.columnWeights = new double[]{0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_6.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		gbl_panel_6.columnWidths = new int[] { 44, 338, 0 };
+		gbl_panel_6.rowHeights = new int[] { 178, 0 };
+		gbl_panel_6.columnWeights = new double[] { 0.0, 0.0, Double.MIN_VALUE };
+		gbl_panel_6.rowWeights = new double[] { 0.0, Double.MIN_VALUE };
 		panel_6.setLayout(gbl_panel_6);
-		
-		
-		
-		
+
 		JLabel lblNewLabel_5 = new JLabel("New label");
-		
+
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
 		gbc_lblNewLabel_5.anchor = GridBagConstraints.NORTHWEST;
 		gbc_lblNewLabel_5.gridx = 1;
 		gbc_lblNewLabel_5.gridy = 0;
 		panel_6.add(lblNewLabel_5, gbc_lblNewLabel_5);
-		
+
 //
 		JPanel panel_4 = new JPanel();
 		panel_4.setBackground(Color.DARK_GRAY);
@@ -125,11 +122,13 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				String id = txtId.getText();
-				if (dao.idCheck(id)) {
-					JOptionPane.showMessageDialog(getParent(), "중복된 아이디");
-				}
-					
+				Object obj = e.getSource();
+				 id = txtId.getText();
+					if (dao.idCheck(id)) {
+						JOptionPane.showMessageDialog(null, "중복된 아이디");
+					} else {
+						JOptionPane.showMessageDialog(null, "사용가능한 아이디");
+					}
 				
 			}
 		});
@@ -206,26 +205,25 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 	public void actionPerformed(ActionEvent e) {
 		UserDTO newdto = new UserDTO();
 		String cmd = e.getActionCommand();
+		id=txtId.getText();
 		
-	
 
 		if (cmd.equals("회원가입")) {
-			
+
 			// 사용자 입력값 가져오기
-			 if (txtId.getText().trim().length() == 0 || txtPwd.getText().trim().length() == 0
-					|| txtName.getText().trim().length() == 0 || txtEmail.getText().trim().length() == 0) {
+			if (txtId.getText().trim().length() == 0 || txtPwd.getText().trim().length() == 0
+					|| txtName.getText().trim().length() == 0 || txtEmail.getText().trim().length() == 0 || dao.idCheck(id) ) {
 				String signin = "회원가입실패";
 				JOptionPane.showMessageDialog(null, signin, "회원가입실패", JOptionPane.WARNING_MESSAGE);
-				
-			} 
-		else {
+
+			} else {
 
 				String signinfail = "회원가입 성공 ";
-				
+
 				JOptionPane.showMessageDialog(getParent(), signinfail, "회원가입성공", JOptionPane.OK_CANCEL_OPTION);
 				dispose();
 				new TeamMain();
-				
+
 			}
 			newdto.setUserID(txtId.getText());
 
@@ -233,16 +231,12 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 			newdto.setUserName(txtName.getText());
 			newdto.setUserEm(txtEmail.getText());
 
-			
 			dao.insertUser(newdto);
-			
-			
-		}
-		
-		dispose();
-		
-	     
+
 		}
 
+		dispose();
+
+	}
 
 }
