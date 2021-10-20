@@ -134,6 +134,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 		contentPane.add(panel_2, BorderLayout.SOUTH);
 
 		JButton btnNewButton = new JButton("목록");
+		btnNewButton.addActionListener(this);
 		btnNewButton.setBackground(Color.WHITE);
 		panel_2.add(btnNewButton);
 
@@ -173,8 +174,6 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 				dto.setBoardSub(textArea.getText());
 				textArea.setEditable(true);
 
-				
-
 			}
 		});
 		btnNewButton.setBackground(Color.WHITE);
@@ -213,19 +212,23 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		BoardDTO dto = new BoardDTO();
-		dto.setBoardTitle(textField.getText());
-		dto.setBoardSub(textArea.getText());
-
+		String cmd = e.getActionCommand();
+		if (cmd.equals("목록")) {
+			dispose();
+			new TeamLogin(no);
+		} else if (cmd.equals("글쓰기")) {
+			BoardDTO dto = new BoardDTO();
+			dto.setBoardTitle(textField.getText());
+			dto.setBoardSub(textArea.getText());
+		}
 	}// actionperformed
 
 	private void getRow(int no) {
 		TeamDAO dao = new TeamDAO();
-		
-		//조회수 올리기
+
+		// 조회수 올리기
 		dao.update2(no);
-		
-		
+
 		BoardDTO dto = dao.select3(no);
 
 		textField.setText(dto.getBoardTitle());

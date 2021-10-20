@@ -123,13 +123,13 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
 				Object obj = e.getSource();
-				 id = txtId.getText();
-					if (dao.idCheck(id)) {
-						JOptionPane.showMessageDialog(null, "중복된 아이디");
-					} else {
-						JOptionPane.showMessageDialog(null, "사용가능한 아이디");
-					}
-				
+				id = txtId.getText();
+				if (dao.idCheck(id)) {
+					JOptionPane.showMessageDialog(null, "중복된 아이디");
+				} else {
+					JOptionPane.showMessageDialog(null, "사용가능한 아이디");
+				}
+
 			}
 		});
 
@@ -205,14 +205,14 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 	public void actionPerformed(ActionEvent e) {
 		UserDTO newdto = new UserDTO();
 		String cmd = e.getActionCommand();
-		id=txtId.getText();
-		
+		id = txtId.getText();
 
 		if (cmd.equals("회원가입")) {
 
 			// 사용자 입력값 가져오기
 			if (txtId.getText().trim().length() == 0 || txtPwd.getText().trim().length() == 0
-					|| txtName.getText().trim().length() == 0 || txtEmail.getText().trim().length() == 0 || dao.idCheck(id) ) {
+					|| txtName.getText().trim().length() == 0 || txtEmail.getText().trim().length() == 0
+					|| dao.idCheck(id)) {
 				String signin = "회원가입실패";
 				JOptionPane.showMessageDialog(null, signin, "회원가입실패", JOptionPane.WARNING_MESSAGE);
 
@@ -233,10 +233,13 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 
 			dao.insertUser(newdto);
 
+		} else {
+			dispose();
+			new TeamMain();
 		}
 
-		dispose();
-
 	}
+
+	
 
 }

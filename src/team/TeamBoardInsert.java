@@ -72,7 +72,7 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 		setBackground(Color.BLACK);
 		setTitle("게시글 작성하기");
 		setFont(new Font("Dialog", Font.BOLD, 20));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 370);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
@@ -135,7 +135,11 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
 
 		textsub = new JTextArea();
+
+		textsub.setForeground(Color.black);
+
 		textsub.setForeground(Color.BLACK);
+
 		panel_1.add(textsub);
 		textsub.addMouseListener(this);
 
@@ -147,13 +151,23 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 		btnNewButton.setBackground(Color.WHITE);
 		panel_2.add(btnNewButton);
 		btnNewButton.addActionListener(this);
+		
 		JButton btnNewButton_2 = new JButton("취소");
 		btnNewButton_2.setBackground(Color.WHITE);
 		panel_2.add(btnNewButton_2);
+        btnNewButton_2.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new TeamLogin(userNm);
 
+			}
+		});
 		setVisible(true);
 		
 		this.userNm = userNm;
+		
 	}
 
 	@Override
@@ -178,13 +192,15 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 				BoardDTO dto = new BoardDTO();
 				dto.setBoardTitle(textTitle.getText());
 				dto.setUserNm(userNm);
+				textField_2.setEditable(false);
 				dto.setBoardSub(textsub.getText());
 				
 				if(dao.insertBoard(dto)) {
 					System.out.print("success");
 					
+					dispose();
+					new TeamLogin(userNm);
 				}
-				new TeamLogin(userNm);
 			}
 			
 //			new TeamLogin();
