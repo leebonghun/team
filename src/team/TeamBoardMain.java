@@ -92,6 +92,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         panel_3.add(lblNewLabel_1);
         
         textField = new JTextField();
+        textField.setEditable(false);
         textField.setForeground(Color.BLACK);
         panel_3.add(textField);
         textField.addActionListener(this);
@@ -109,6 +110,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         panel_5.add(lblNewLabel_3);
         
         textField_1 = new JTextField();
+        textField_1.setEditable(false);
         textField_1.setBackground(Color.WHITE);
         panel_5.add(textField_1);
         textField_1.setColumns(10);
@@ -127,6 +129,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         panel_1.setLayout(new GridLayout(0, 1, 0, 0));
         
         textArea = new JTextArea();
+        textArea.setEditable(false);
         textArea.setForeground(Color.BLACK);
         textArea.setBackground(Color.WHITE);
         panel_1.add(textArea);
@@ -180,6 +183,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
     	BoardDTO dto =dao.select3(no);
     	
     	textField.setText(dto.getBoardTitle());
+    	textField_1.setText(Integer.toString(dto.getUserNm()));
     	textArea.setText(dto.getBoardSub());
     	
     }
