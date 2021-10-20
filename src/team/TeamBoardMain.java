@@ -13,6 +13,7 @@ import java.util.Vector;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -30,7 +31,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 	private JTextArea textArea;
 	private TeamDAO dao;
 	private int no;
-
+	private int userNm;
 	/**
 	 * Launch the application.
 	 */
@@ -50,12 +51,13 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public TeamBoardMain(int no) {
+	public TeamBoardMain(int no,int userNm) {
 		setForeground(Color.WHITE);
 		setBackground(Color.BLACK);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TeamBoardMain.class.getResource("/team/v.jpg")));
 
 		this.no = no;
+		this.userNm = userNm;
 
 		setTitle("게시글 조회");
 		setFont(new Font("Dialog", Font.BOLD, 20));
@@ -146,12 +148,16 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				TeamDAO dao = new TeamDAO();
 				BoardDTO dto = dao.select3(no);
-
-				dto.setBoardTitle(textField.getText());
-				dto.setBoardSub(textArea.getText());
-				dao.deleteUser(dto);
-				new TeamLogin(no);
-				System.out.println("Success" + dao.deleteUser(dto));
+				if(userNm == Integer.parseInt(textField_1.getText())) {
+					
+					dto.setBoardTitle(textField.getText());
+					dto.setBoardSub(textArea.getText());
+					dao.deleteUser(dto);
+					new TeamLogin(no);
+					System.out.println("Success" + dao.deleteUser(dto));
+				}else {
+					JOptionPane.showMessageDialog(null, "권한이 없습니다");
+				}
 
 			}
 		});
@@ -165,14 +171,22 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				TeamDAO dao = new TeamDAO();
-				BoardDTO dto = new BoardDTO();
-				dto.setBoardTitle(textField.getText());
-				textField.setEditable(true);
-				dto.setUserNm(Integer.parseInt(textField_1.getText()));
+				
+				if(userNm == Integer.parseInt(textField_1.getText())) {
+					
+					TeamDAO dao = new TeamDAO();
+					BoardDTO dto = new BoardDTO();
+					dto.setBoardTitle(textField.getText());
+					textField.setEditable(true);
+					dto.setUserNm(Integer.parseInt(textField_1.getText()));
 
-				dto.setBoardSub(textArea.getText());
-				textArea.setEditable(true);
+					dto.setBoardSub(textArea.getText());
+					textArea.setEditable(true);
+				}else {
+					JOptionPane.showMessageDialog(null, "권한이 없습니다");
+				}
+					
+				
 
 			}
 		});

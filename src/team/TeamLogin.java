@@ -167,16 +167,12 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 				
 				Integer no = (Integer) table_1.getModel().getValueAt(table_1.getSelectedRow(), 0);
 
-				
-				
-				
-
                 BoardDTO dto = new BoardDTO();
                
 				//setVisible(false);
 				dispose();
 
-				new TeamBoardMain(no);
+				new TeamBoardMain(no,userNm);
 			}
 		});
 
