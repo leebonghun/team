@@ -237,9 +237,11 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 			dao.insertUser(newdto);
 			
 			
+		}else {
+			dispose();
+			new TeamMain();
 		}
-		
-		dispose();
+	
 		
 	     
 		}

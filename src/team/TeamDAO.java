@@ -349,7 +349,38 @@ public class TeamDAO {
 			}
 			return deleteFlag;
 		}//deleteuserid
-
 		
+//		public boolean uopdateboard(String title,String sub) {
+//
+//			Connection con = null;
+//			PreparedStatement pstmt = null;
+//			boolean updateFlag = false;
+//
+//			try {
+//
+//				con = getConnection();
+//
+//				String sql = "update boardtable set title=?,sub=? where title=?";
+//				pstmt = con.prepareStatement(sql);
+//				pstmt.setString(1,title);
+//				pstmt.setString(2, sub);
+//
+//				int result = pstmt.executeUpdate();
+//				if (result > 0) {// update 성공
+//					updateFlag = true;
+//				}
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			} finally {
+//				try {
+//					pstmt.close();
+//					con.close();
+//				} catch (Exception e2) {
+//					e2.printStackTrace();
+//				}
+//			}
+//			return updateFlag;
+//		}
+//		
 		
 }//teamdao
