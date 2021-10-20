@@ -144,7 +144,8 @@ implements ActionListener,ItemListener {
     	
       
         if(cmd.equals("회원가입")) {
-            new TeamSignIn();
+            dispose();
+        	new TeamSignIn();
             
         }else if(cmd.equals("로그인")) {
         	int userNm=dao.loginUser(username, password);
