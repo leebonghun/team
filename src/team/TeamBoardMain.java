@@ -138,9 +138,10 @@ public class TeamBoardMain extends JFrame implements ActionListener {
         contentPane.add(panel_2, BorderLayout.SOUTH);
         
         JButton btnNewButton = new JButton("목록");
+        btnNewButton.addActionListener(this);
         btnNewButton.setBackground(Color.WHITE);
         panel_2.add(btnNewButton);
-        
+       
         JButton btnNewButton_1 = new JButton("삭제");
         btnNewButton_1.addActionListener(new ActionListener() {
 			
@@ -154,10 +155,11 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 		        dao.deleteUser(dto);
 		        new TeamLogin(no);
 		        System.out.println("Success"+dao.deleteUser(dto));
+		        dispose();
+	    		new TeamLogin(no);
 		        
 			}
 		});
-
         panel_2.add(btnNewButton_1);
         btnNewButton.addActionListener(this);
         getRow(no);
@@ -167,10 +169,17 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        BoardDTO dto = new BoardDTO();
-        dto.setBoardTitle(textField.getText());
-        dto.setBoardSub(textArea.getText());
        
+    	String cmd=e.getActionCommand();
+    	if(cmd.equals("목록")) {
+    		dispose();
+    		new TeamLogin(no);
+    	}else if(cmd.equals("글쓰기")) {
+    		
+	        BoardDTO dto = new BoardDTO();
+	        dto.setBoardTitle(textField.getText());
+	        dto.setBoardSub(textArea.getText());
+    	}
     
     
     }//actionperformed
