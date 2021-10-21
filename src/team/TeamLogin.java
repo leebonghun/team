@@ -119,6 +119,7 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 		contentPane.add(scrollPane_1, BorderLayout.CENTER);
 
 		table_1 = new JTable();
+		table_1.setRowHeight(30);
 		table_1.setFont(new Font("굴림", Font.PLAIN, 19));
 		table_1.setBackground(Color.BLACK);
 		table_1.setForeground(Color.WHITE);

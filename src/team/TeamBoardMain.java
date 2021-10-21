@@ -159,6 +159,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 					dto.setBoardTitle(textField.getText());
 					dto.setBoardSub(textArea.getText());
 					dao.deleteUser(dto);
+					dispose();
 					new TeamLogin(userNm);
 					System.out.println("Success" + dao.deleteUser(dto));
 				} else {
@@ -218,6 +219,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 					textArea.setEditable(true);
 					System.out.println("success" + dao.update1(dto));
 					dao.update1(dto);
+					dispose();
 					new TeamLogin(userNm);
 
 				}
