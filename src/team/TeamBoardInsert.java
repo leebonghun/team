@@ -120,6 +120,7 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 
 		textField_2 = new JTextField(String.valueOf(userNm));
 		textField_2.setFont(new Font("굴림", Font.PLAIN, 16));
+		textField_2.setEditable(false);
 		panel_5.add(textField_2);
 		textField_2.setColumns(10);
 
