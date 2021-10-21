@@ -31,6 +31,7 @@ import java.awt.Image;
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import java.awt.Toolkit;
+import java.awt.Font;
 // 게시판 출력화면 
 
 //만들어야될것 
@@ -118,8 +119,9 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 		contentPane.add(scrollPane_1, BorderLayout.CENTER);
 
 		table_1 = new JTable();
+		table_1.setFont(new Font("굴림", Font.PLAIN, 19));
 		table_1.setBackground(Color.BLACK);
-		table_1.setForeground(Color.PINK);
+		table_1.setForeground(Color.WHITE);
 		String list1[] = { "번호", "제목", "작성자", "작성일자", "조회수" };
 		model = new DefaultTableModel(list1, 0) {
 			// 셀의 내용을 수정할 수 없게 처리

@@ -62,7 +62,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 		setTitle("게시글 조회");
 		setFont(new Font("Dialog", Font.BOLD, 20));
 
-		setBounds(1100, 30, 450, 370);
+		setBounds(1100, 30, 700, 500);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -86,11 +86,13 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 		panel_3.setLayout(new GridLayout(0, 2, 0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("글 제목");
+		lblNewLabel_1.setFont(new Font("굴림", Font.PLAIN, 16));
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setBackground(Color.BLACK);
 		panel_3.add(lblNewLabel_1);
 
 		textField = new JTextField();
+		textField.setFont(new Font("굴림", Font.PLAIN, 16));
 		textField.setEditable(false);
 		textField.setForeground(Color.BLACK);
 		panel_3.add(textField);
@@ -104,10 +106,12 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 		panel_5.setLayout(new GridLayout(0, 2, 0, 0));
 
 		JLabel lblNewLabel_3 = new JLabel("작성자");
+		lblNewLabel_3.setFont(new Font("굴림", Font.PLAIN, 16));
 		lblNewLabel_3.setForeground(Color.WHITE);
 		panel_5.add(lblNewLabel_3);
 
 		textField_1 = new JTextField();
+		textField_1.setFont(new Font("굴림", Font.PLAIN, 16));
 		textField_1.setEditable(false);
 		textField_1.setBackground(Color.WHITE);
 		panel_5.add(textField_1);
@@ -119,6 +123,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 		panel_4.setLayout(new GridLayout(1, 0, 0, 0));
 
 		JLabel lblNewLabel_2 = new JLabel("내용");
+		lblNewLabel_2.setFont(new Font("굴림", Font.PLAIN, 16));
 		lblNewLabel_2.setForeground(Color.WHITE);
 		panel_4.add(lblNewLabel_2);
 
@@ -127,6 +132,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
 
 		textArea = new JTextArea();
+		textArea.setFont(new Font("굴림", Font.PLAIN, 16));
 		textArea.setEditable(false);
 		textArea.setForeground(Color.BLACK);
 		textArea.setBackground(Color.WHITE);

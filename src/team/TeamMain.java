@@ -60,7 +60,7 @@ public class TeamMain extends JFrame implements ActionListener, ItemListener {
 		setIconImage(
 				Toolkit.getDefaultToolkit().getImage(TeamMain.class.getResource("/team/화면 캡처 2021-10-19 155329.jpg")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 370);
+		setBounds(100, 100, 700, 500);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.DARK_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -84,10 +84,11 @@ public class TeamMain extends JFrame implements ActionListener, ItemListener {
 		JLabel lblNewLabel_1 = new JLabel("아이디");
 		lblNewLabel_1.setBackground(Color.DARK_GRAY);
 		lblNewLabel_1.setForeground(Color.white);
-		lblNewLabel_1.setFont(new Font("굴림", Font.PLAIN, 14));
+		lblNewLabel_1.setFont(new Font("굴림", Font.PLAIN, 16));
 		panel_3.add(lblNewLabel_1);
 
 		textField = new JTextField();
+		textField.setFont(new Font("굴림", Font.PLAIN, 16));
 
 		textField.addActionListener(this);
 		panel_3.add(textField);
@@ -98,11 +99,12 @@ public class TeamMain extends JFrame implements ActionListener, ItemListener {
 		contentPane.add(panel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("비밀번호");
-		lblNewLabel_2.setFont(new Font("굴림", Font.PLAIN, 14));
+		lblNewLabel_2.setFont(new Font("굴림", Font.PLAIN, 16));
 		lblNewLabel_2.setForeground(Color.white);
 		panel_1.add(lblNewLabel_2);
 
 		password1 = new JPasswordField();
+		password1.setFont(new Font("굴림", Font.PLAIN, 16));
 		password1.setEchoChar('*');
 
 		password1.addActionListener(this);

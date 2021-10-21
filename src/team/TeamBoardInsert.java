@@ -72,7 +72,7 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 		setTitle("게시글 작성하기");
 		setFont(new Font("Dialog", Font.BOLD, 20));
 //		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 370);
+		setBounds(100, 100, 700, 500);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.BLACK);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -96,10 +96,12 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 		panel_3.setLayout(new GridLayout(0, 2, 0, 0));
 
 		JLabel lblNewLabel_1 = new JLabel("글 제목");
+		lblNewLabel_1.setFont(new Font("굴림", Font.PLAIN, 16));
 		lblNewLabel_1.setForeground(Color.WHITE);
 		panel_3.add(lblNewLabel_1);
 
 		textTitle = new JTextField();
+		textTitle.setFont(new Font("굴림", Font.PLAIN, 16));
 		textTitle.setForeground(Color.BLACK);
 		textTitle.setBackground(Color.WHITE);
 		panel_3.add(textTitle);
@@ -112,10 +114,12 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 		panel_5.setLayout(new GridLayout(0, 2, 0, 0));
 
 		JLabel lblNewLabel_3 = new JLabel("작성자");
+		lblNewLabel_3.setFont(new Font("굴림", Font.PLAIN, 16));
 		lblNewLabel_3.setForeground(Color.WHITE);
 		panel_5.add(lblNewLabel_3);
 
 		textField_2 = new JTextField(String.valueOf(userNm));
+		textField_2.setFont(new Font("굴림", Font.PLAIN, 16));
 		panel_5.add(textField_2);
 		textField_2.setColumns(10);
 
@@ -125,6 +129,7 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 		panel_4.setLayout(new GridLayout(1, 0, 0, 0));
 
 		JLabel lblNewLabel_2 = new JLabel("내용");
+		lblNewLabel_2.setFont(new Font("굴림", Font.PLAIN, 16));
 		lblNewLabel_2.setBackground(Color.BLACK);
 		lblNewLabel_2.setForeground(Color.WHITE);
 		panel_4.add(lblNewLabel_2);
@@ -134,6 +139,7 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
 
 		textsub = new JTextArea();
+		textsub.setFont(new Font("굴림", Font.PLAIN, 16));
 
 		textsub.setForeground(Color.black);
 
