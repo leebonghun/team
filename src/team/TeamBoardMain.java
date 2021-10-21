@@ -51,7 +51,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 	/**
 	 * Create the frame.
 	 */
-	public TeamBoardMain(int no,int userNm) {
+	public TeamBoardMain(int no, int userNm) {
 		setForeground(Color.WHITE);
 		setBackground(Color.BLACK);
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TeamBoardMain.class.getResource("/team/v.jpg")));
@@ -146,20 +146,19 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(userNm == Integer.parseInt(textField_1.getText())) {
-					
+				if (userNm == Integer.parseInt(textField_1.getText())) {
+
 					TeamDAO dao = new TeamDAO();
-					BoardDTO dto = dao.select3(no,userNm);
+					BoardDTO dto = dao.select3(no, userNm);
 					dto.setBoardTitle(textField.getText());
 					dto.setBoardSub(textArea.getText());
 					dao.deleteUser(dto);
 					new TeamLogin(userNm);
 					System.out.println("Success" + dao.deleteUser(dto));
-				}else {
+				} else {
 					JOptionPane.showMessageDialog(null, "권한이 없습니다");
 				}
 
-				
 			}
 		});
 
@@ -172,9 +171,8 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if(userNm == Integer.parseInt(textField_1.getText())) {
-					
-					
+				if (userNm == Integer.parseInt(textField_1.getText())) {
+
 					TeamDAO dao = new TeamDAO();
 					BoardDTO dto = new BoardDTO();
 					dto.setBoardTitle(textField.getText());
@@ -183,14 +181,11 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 
 					dto.setBoardSub(textArea.getText());
 					textArea.setEditable(true);
-				
-				}else {
+
+				} else {
 					JOptionPane.showMessageDialog(null, "권한이 없습니다");
 				}
-					
-				
 
-				
 			}
 		});
 		btnNewButton.setBackground(Color.WHITE);
@@ -200,7 +195,7 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 		btnNewButton_3.setBackground(Color.WHITE);
 		panel_2.add(btnNewButton_3);
 		btnNewButton_3.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
@@ -218,13 +213,13 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 					System.out.println("success" + dao.update1(dto));
 					dao.update1(dto);
 					new TeamLogin(userNm);
-					
+
 				}
 			}
 		});
 
 		btnNewButton.addActionListener(this);
-		getRow(no,userNm);
+		getRow(no, userNm);
 		setVisible(true);
 
 	}
@@ -242,14 +237,14 @@ public class TeamBoardMain extends JFrame implements ActionListener {
 		}
 	}// actionperformed
 
-	private void getRow(int no,int userNm) {
+	private void getRow(int no, int userNm) {
 		TeamDAO dao = new TeamDAO();
 
 		// 조회수 올리기
 		dao.update2(no);
 
-		BoardDTO dto = dao.select3(no,userNm);
-		dao.select3(no,userNm);
+		BoardDTO dto = dao.select3(no, userNm);
+		dao.select3(no, userNm);
 
 		textField.setText(dto.getBoardTitle());
 		textField_1.setText(Integer.toString(dto.getUserNm()));

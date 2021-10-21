@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
 @Setter
 @ToString
 @Getter
@@ -19,7 +18,7 @@ public class BoardDTO {
 	private String boardTitle;
 	private String boardSub;
 	private int userNm;
-	private  Date boardDate;
+	private Date boardDate;
 	private int boardCount;
-	
+
 }

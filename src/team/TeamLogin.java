@@ -83,7 +83,6 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(50, 30, 1000, 1000);
 
-
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -101,10 +100,6 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 		 * JList<String> list = new JList<String>(sub); panel.add(list);
 		 */
 
-
-		 
-
-
 		// 중앙 스크롤 패인 (게시물 작성후 등록되서 보이는 목록들)
 		JScrollPane scrollPane = new JScrollPane();
 		panel.add(scrollPane);
@@ -117,9 +112,6 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 		JLabel lblNewLabel_1 = new JLabel("");
 		lblNewLabel_1.setIcon(new ImageIcon(TeamLogin.class.getResource("/team/4444.jpg")));
 		panel_2.add(lblNewLabel_1);
-
-
-
 
 		// "번호","제목","작성자","작성일자","조회수" 테이블 모델 패인
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -164,15 +156,15 @@ public class TeamLogin extends JFrame implements ActionListener, ItemListener, M
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+
 				Integer no = (Integer) table_1.getModel().getValueAt(table_1.getSelectedRow(), 0);
 
-                BoardDTO dto = new BoardDTO();
-               
-				//setVisible(false);
+				BoardDTO dto = new BoardDTO();
+
+				// setVisible(false);
 				dispose();
 
-				new TeamBoardMain(no,userNm);
+				new TeamBoardMain(no, userNm);
 			}
 		});
 

@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import lombok.Cleanup;
@@ -36,7 +37,7 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 	private JPanel contentPane;
 	private JTextField txtEmail;
 	private JTextField txtId;
-	private JTextField txtPwd;
+	private JPasswordField txtPwd;
 	private JTextField txtName;
 	private JButton btnNewButton, btnNewButton_1, btnNewButton_2;
 	private String id;
@@ -145,7 +146,7 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 		panel_2.add(lblNewLabel_2);
 		lblNewLabel_2.setForeground(Color.white);
 
-		txtPwd = new JTextField();
+		txtPwd = new JPasswordField();
 		panel_2.add(txtPwd);
 		txtPwd.addActionListener(this);
 		txtPwd.setColumns(10);
@@ -239,7 +240,5 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 		}
 
 	}
-
-	
 
 }

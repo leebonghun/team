@@ -38,13 +38,12 @@ import java.awt.Toolkit;
 
 public class TeamBoardInsert extends JFrame implements ActionListener, ItemListener, MouseListener {
 
-
 	private JPanel contentPane;
 	private JTextField textTitle;
 	private JTextField textField_2;
 	private JTextArea textsub;
-	TeamDAO dao= new TeamDAO();
-	
+	TeamDAO dao = new TeamDAO();
+
 	private int userNm;
 
 //	/**
@@ -151,12 +150,12 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 		btnNewButton.setBackground(Color.WHITE);
 		panel_2.add(btnNewButton);
 		btnNewButton.addActionListener(this);
-		
+
 		JButton btnNewButton_2 = new JButton("취소");
 		btnNewButton_2.setBackground(Color.WHITE);
 		panel_2.add(btnNewButton_2);
-        btnNewButton_2.addActionListener(new ActionListener() {
-			
+		btnNewButton_2.addActionListener(new ActionListener() {
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -165,9 +164,9 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 			}
 		});
 		setVisible(true);
-		
+
 		this.userNm = userNm;
-		
+
 	}
 
 	@Override
@@ -178,31 +177,29 @@ public class TeamBoardInsert extends JFrame implements ActionListener, ItemListe
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
-		
+
 		String cmd = e.getActionCommand();
-		
+
 		if (cmd.equals("작성")) {
 			if (textsub.getText().trim().length() == 0) {
 				String insertfail = "내용을 입력해주세요.";
 				JOptionPane.showConfirmDialog(null, insertfail, "작성실패", JOptionPane.WARNING_MESSAGE);
 			} else {
-				
-				
+
 				BoardDTO dto = new BoardDTO();
 				dto.setBoardTitle(textTitle.getText());
 				dto.setUserNm(userNm);
 				textField_2.setEditable(false);
 				dto.setBoardSub(textsub.getText());
-				
-				if(dao.insertBoard(dto)) {
+
+				if (dao.insertBoard(dto)) {
 					System.out.print("success");
-					
+
 					dispose();
 					new TeamLogin(userNm);
 				}
 			}
-			
+
 //			new TeamLogin();
 		}
 

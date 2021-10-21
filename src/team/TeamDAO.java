@@ -10,13 +10,10 @@ import java.sql.SQLException;
 import java.util.Vector;
 
 public class TeamDAO {
-	
+
 	Vector<UserDTO> vetList = new Vector<UserDTO>();
- //adasd
-	
-	
-	
-	
+	// adasd
+
 	static {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -40,11 +37,10 @@ public class TeamDAO {
 	}//
 
 	// userTBL 데이터 모두 가져오기
-	public Vector<UserDTO> select1(String username,String password) {
+	public Vector<UserDTO> select1(String username, String password) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
 
 		try {
 
@@ -76,10 +72,9 @@ public class TeamDAO {
 			}
 		}
 		return vetList;
-	}//select1
-	
-	
-	///board테이블 가져오기
+	}// select1
+
+	/// board테이블 가져오기
 	public Vector<BoardDTO> select2() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -117,9 +112,9 @@ public class TeamDAO {
 			}
 		}
 		return boardList;
-	}//select 2
-	
-	public BoardDTO select3(int no,int userNm) {
+	}// select 2
+
+	public BoardDTO select3(int no, int userNm) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -130,18 +125,16 @@ public class TeamDAO {
 			con = getConnection();
 
 			String sql = "select * from BoardTable where boardNm = ?";
-			
+
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
-			
-					
+
 			while (rs.next()) {
 				boarddto.setBoardTitle(rs.getString("BoardTitle"));
 				boarddto.setUserNm(rs.getInt("userNm"));
 				boarddto.setBoardSub(rs.getString("BoardSub"));
-				
-				
+
 			}
 
 		} catch (Exception e) {
@@ -156,28 +149,26 @@ public class TeamDAO {
 			}
 		}
 		return boarddto;
-	}//select 3
-	
+	}// select 3
+
 	public boolean update1(BoardDTO updateuser) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		boolean flag = false;
-		
+
 		try {
 			String sql = "update BoardTable set boardTitle=? , boardSub=? where boardNm=?";
-			con=getConnection();
+			con = getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(3, updateuser.getBoardNm());
 			pstmt.setString(1, updateuser.getBoardTitle());
 			pstmt.setString(2, updateuser.getBoardSub());
-		
-				
+
 			int result = pstmt.executeUpdate();
-			if(result > 0) {
+			if (result > 0) {
 				flag = true;
 			}
-			 
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
 		} finally {
@@ -189,28 +180,25 @@ public class TeamDAO {
 			}
 		}
 		return flag;
-	}//update1
+	}// update1
+
 	public boolean update2(int no) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		boolean flag = false;
-		
+
 		try {
 			String sql = "update BoardTable set boardCount=boardCount+1 where boardNm=?";
-			con=getConnection();
+			con = getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, no);
-			
-			
-		
-				
+
 			int result = pstmt.executeUpdate();
-			if(result > 0) {
+			if (result > 0) {
 				flag = true;
 
 			}
-			 
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();// TODO: handle exception
 		} finally {
@@ -222,31 +210,29 @@ public class TeamDAO {
 			}
 		}
 		return flag;
-	}//update1
-	
-	
-	
-	//로그인함수
-	public int loginUser(String userId,String password) {
+	}// update1
+
+	// 로그인함수
+	public int loginUser(String userId, String password) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		boolean loginFlag = false;
 		try {
-			con =getConnection();
-			String sql="select userNm from userTable where UserID = ? and userpw=?";
-			
-			pstmt=con.prepareStatement(sql);
-			pstmt.setString(1,userId);
-			pstmt.setString(2,password);
-			
-			rs=pstmt.executeQuery();
-			if(rs.next()) {
+			con = getConnection();
+			String sql = "select userNm from userTable where UserID = ? and userpw=?";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			pstmt.setString(2, password);
+
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
 				return rs.getInt(1);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				pstmt.close();
 				con.close();
@@ -255,138 +241,133 @@ public class TeamDAO {
 			}
 		}
 		return 0;
-	}//insertuser
-	
-	//신입 회원입력
-		public boolean insertUser(UserDTO userinsert) {
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			boolean insertFlag = false;
-			try {
-				con =getConnection();
-				String sql="insert into userTable(userID,userNm,userPw,userName,userEm)";
-				sql+="values(?,userNm_SEQ.nextval,?,?,?)";
-				pstmt=con.prepareStatement(sql);
-				pstmt.setString(1,userinsert.getUserID());
-				pstmt.setString(2,userinsert.getUserPw());
-				pstmt.setString(3, userinsert.getUserName());
-				pstmt.setString(4, userinsert.getUserEm());
-				int result=pstmt.executeUpdate();
-				if (result>0) {
-					insertFlag=true;
-					
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}finally {
-				try {
-					pstmt.close();
-					con.close();
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
+	}// insertuser
+
+	// 신입 회원입력
+	public boolean insertUser(UserDTO userinsert) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		boolean insertFlag = false;
+		try {
+			con = getConnection();
+			String sql = "insert into userTable(userID,userNm,userPw,userName,userEm)";
+			sql += "values(?,userNm_SEQ.nextval,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userinsert.getUserID());
+			pstmt.setString(2, userinsert.getUserPw());
+			pstmt.setString(3, userinsert.getUserName());
+			pstmt.setString(4, userinsert.getUserEm());
+			int result = pstmt.executeUpdate();
+			if (result > 0) {
+				insertFlag = true;
+
 			}
-			return insertFlag;
-		}//insertuser
-		
-		
-		
-		public boolean idCheck(String id ) {
-			Connection con = null;
-	PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		boolean idflag = true;
-				
-			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
 			try {
-				con=getConnection();
-			pstmt=con.prepareStatement("Select count(*) cnt from UserTable where Userid = ?");
-			pstmt.setString(1, id);
-				rs=pstmt.executeQuery();
-				if(rs.next()) {
-					int cnt = rs.getInt("cnt");
-					if(cnt>0) {
-						return true;
-					}
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}finally {try {
-				
 				pstmt.close();
 				con.close();
-				
 			} catch (Exception e2) {
 				e2.printStackTrace();
 			}
-				
+		}
+		return insertFlag;
+	}// insertuser
+
+	public boolean idCheck(String id) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean idflag = true;
+
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement("Select count(*) cnt from UserTable where Userid = ?");
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				int cnt = rs.getInt("cnt");
+				if (cnt > 0) {
+					return true;
+				}
 			}
-			return false;
-			}
-
-	
-		public boolean insertBoard(BoardDTO boardinsert) {
-            Connection con = null;
-            PreparedStatement pstmt = null;
-            boolean insertFlag = false;
-            try {
-                con =getConnection();
-                String sql="insert into boardTable(boardnm,boardtitle,boardSUB,usernm,boarddate,boardcount)";
-                sql+="values(boardnm_seq.nextval,?,?,?,sysdate,0)";
-                pstmt=con.prepareStatement(sql);
-                pstmt.setString(1,boardinsert.getBoardTitle());
-                pstmt.setString(2,boardinsert.getBoardSub());
-                pstmt.setInt(3,boardinsert.getUserNm());
-                int result=pstmt.executeUpdate();
-                if (result>0) {
-                    insertFlag=true;
-
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-            }finally {
-                try {
-                    pstmt.close();
-                    con.close();
-                } catch (Exception e2) {
-                    e2.printStackTrace();
-                }
-            }
-            return insertFlag;
-        }//insertboard
-
-	
-		
-		// 게시글 삭제
-		public boolean deleteUser(BoardDTO userdelete) {
-			Connection con = null;
-			PreparedStatement pstmt = null;
-			boolean deleteFlag = false;
-
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
 			try {
-				con = getConnection();
-				String sql = "delete BoardTable where boardTitle =?";
-				pstmt = con.prepareStatement(sql);
-				pstmt.setString(1, userdelete.getBoardTitle());          
-                
-				int result = pstmt.executeUpdate();
-				if (result > 0) {
-					deleteFlag = true;
-				}
 
-			} catch (Exception e) {
-				e.printStackTrace();
-			} finally {
-				try {
-					pstmt.close();
-					con.close();
-				} catch (Exception e2) {
-					e2.printStackTrace();
-				}
+				pstmt.close();
+				con.close();
+
+			} catch (Exception e2) {
+				e2.printStackTrace();
 			}
-			return deleteFlag;
-		}//deleteuserid
-		
+
+		}
+		return false;
+	}
+
+	public boolean insertBoard(BoardDTO boardinsert) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		boolean insertFlag = false;
+		try {
+			con = getConnection();
+			String sql = "insert into boardTable(boardnm,boardtitle,boardSUB,usernm,boarddate,boardcount)";
+			sql += "values(boardnm_seq.nextval,?,?,?,sysdate,0)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, boardinsert.getBoardTitle());
+			pstmt.setString(2, boardinsert.getBoardSub());
+			pstmt.setInt(3, boardinsert.getUserNm());
+			int result = pstmt.executeUpdate();
+			if (result > 0) {
+				insertFlag = true;
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return insertFlag;
+	}// insertboard
+
+	// 게시글 삭제
+	public boolean deleteUser(BoardDTO userdelete) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		boolean deleteFlag = false;
+
+		try {
+			con = getConnection();
+			String sql = "delete BoardTable where boardTitle =?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userdelete.getBoardTitle());
+
+			int result = pstmt.executeUpdate();
+			if (result > 0) {
+				deleteFlag = true;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				pstmt.close();
+				con.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return deleteFlag;
+	}// deleteuserid
+
 //		public boolean uopdateboard(String title,String sub) {
 //
 //			Connection con = null;
@@ -419,5 +400,5 @@ public class TeamDAO {
 //			return updateFlag;
 //		}//
 //		
-		
-}//teamdao
+
+}// teamdao
