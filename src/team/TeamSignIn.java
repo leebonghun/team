@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
 
 import lombok.Cleanup;
@@ -34,8 +35,9 @@ import java.awt.GridBagConstraints;
 public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
 
    private JPanel contentPane;
-   private JTextField txtId,txtPwd,txtName,txtEmail;
+   private JTextField txtId,txtName,txtEmail;
    private JButton btnNewButton, btnNewButton_1, btnNewButton_2;
+   private JPasswordField txtPwd;
    private String id;
    TeamDAO dao = new TeamDAO();
    
@@ -125,7 +127,7 @@ public class TeamSignIn extends JFrame implements ActionListener, ItemListener {
       lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
       panel_3.add(lblNewLabel_3);
       
-      txtPwd = new JTextField();
+      txtPwd = new JPasswordField();
       txtPwd.setFont(new Font("굴림", Font.PLAIN, 16));
       panel_3.add(txtPwd);
       txtPwd.setColumns(10);

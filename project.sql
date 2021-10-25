@@ -1,14 +1,14 @@
 create table userTable 
-(userID varchar2(10) unique, 
+(userID varchar2(30) unique, 
 userNm number(30) primary key,
-userPw varchar2(20) ,
-userName varchar2(5) unique,
+userPw varchar2(30) ,
+userName varchar2(30) unique,
 userEm varchar2(30) unique);
 
 --
 create table boardTable
 (boardNm number(30) ,
-boardTitle varchar2(20) ,
+boardTitle varchar2(30) ,
 boardSub varchar2(38) ,
 userNm number(30) REFERENCES userTable(userNm) ON DELETE CASCADE,
 boardDate date ,
